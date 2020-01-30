@@ -1,24 +1,32 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <table class="tr-table table table-striped">
+            <table *ngIf="employees.length > 0; else noEmployeesInfo" class="tr-table table">
                 <thead>
                     <tr>
                         <th>employee</th>
                         <th>unit</th>
                         <th>position</th>
                         <th>location</th>
+                        <th>salary</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employees;let i = index">
-                        <td> {{ employee.name }} {{ employee.surname }}</td>
+                    <tr *ngFor="let employee of employees;let i = index" [ngClass]="{'row-error': employee.isRetired}">
+                        <td > {{ employee.name }} {{ employee.surname }}</td>
                         <td> {{ employee.unit }} </td>
                         <td> {{ employee.position }} </td>
                         <td> {{ employee.location }} </td>
+                        <td> {{ employee.salary }}</td>
                     </tr>
                 </tbody>
             </table>
+            <ng-template #noEmployeesInfo>
+                <div class="no-employees-info">
+                    <p> Currently no Employees in service</p>
+                </div>
+            </ng-template>
         </div>
     </div>
+    <tr-average-salary [averageSalary]="averageSalary"></tr-average-salary>
 </div>

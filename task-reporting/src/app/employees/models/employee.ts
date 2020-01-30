@@ -11,4 +11,5 @@ export interface Employee {
     endDate : string;
     fullTime : number;
     location : string;
+    isRetired : boolean;
 }

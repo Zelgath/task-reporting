@@ -8,19 +8,21 @@ import { Employee } from '../models/employee';
 })
 export class EmployeesListComponent implements OnInit {
 
+  averageSalary: number;
   employees : Employee[] = [
     {
       id : 1,
     name : 'John',
     surname : 'Smith',
-    age : 30,
+    age : 73,
     unit : 'DE01',
     position : 'Data Analyst',
     salary : 12000,
     startDate : '2017-08-01',
     endDate : null,
     fullTime : 1,
-    location : 'Monachium'
+    location : 'Monachium',
+    isRetired : true
     },
     {
       id : 2,
@@ -33,7 +35,8 @@ export class EmployeesListComponent implements OnInit {
     startDate : '2019-02-01',
     endDate : 'null',
     fullTime : 1,
-    location : 'Cracow'
+    location : 'Cracow',
+    isRetired : false
     },
     {
       id : 3,
@@ -46,12 +49,20 @@ export class EmployeesListComponent implements OnInit {
     startDate : '2020-01-01',
     endDate : '2020-03-31',
     fullTime : 0.7,
-    location : 'Oslo'
+    location : 'Oslo',
+    isRetired : false
     }
   ]
   constructor() { }
 
   ngOnInit() {
+    this.countAverageSalary();
+  }
+
+  countAverageSalary() : void {
+    this.averageSalary = this.employees
+    .map((employee) => employee.salary)
+    .reduce((prev, next) => (prev + next))/this.employees.length;
   }
 
 }
