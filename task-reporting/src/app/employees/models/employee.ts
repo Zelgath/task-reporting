@@ -1,15 +1,15 @@
 export interface Employee {
 
     id : number;
-    name : string;
-    surname : string;
-    age : number;
-    unit : string;
+    firstName : string;
+    lastName : string;
+    email : string;
+    phoneNumber : string;
+    hireDate : Date;
     position : string;
+    jobId : string;
     salary : number;
-    startDate : string;
-    endDate : string;
-    fullTime : number;
-    location : string;
-    isRetired : boolean;
+    commissionPct : number;
+    managerId : number;
+    departmentId : number;
 }

@@ -13,10 +13,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of employees;let i = index" [ngClass]="{'row-error': employee.isRetired}">
-                        <td > {{ employee.name }} {{ employee.surname }}</td>
-                        <td> {{ employee.unit }} </td>
+                        <td > {{ employee.firstName }} {{ employee.lastName }}</td>
+                        <td> {{ employee.phoneNumber }} </td>
+                        <td> {{ employee.hireDate }} </td>
                         <td> {{ employee.position }} </td>
-                        <td> {{ employee.location }} </td>
                         <td> {{ employee.salary }}</td>
                     </tr>
                 </tbody>
@@ -28,5 +28,5 @@
             </ng-template>
         </div>
     </div>
-    <tr-average-salary [averageSalary]="averageSalary"></tr-average-salary>
+    <tr-average-salary  *ngIf="employees.length > 0;" [averageSalary]="averageSalary"></tr-average-salary>
 </div>
