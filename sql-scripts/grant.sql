@@ -1,0 +1,1 @@
+grant create, drop on task_reporting. * to 'taskuser1'@'localhost';
