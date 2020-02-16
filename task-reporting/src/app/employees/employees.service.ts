@@ -10,12 +10,12 @@ import { Injectable } from '@angular/core';
 export class EmployeesService {
 
 
-  private apiUrl : string = "";
+  private apiUrl : string = "http://localhost:8080/api/employees";
 
 
   constructor(private http : HttpClient) { }
 
-  getCars() : Observable<Employee[]> {
+  public getCars() : Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl);
 }
 

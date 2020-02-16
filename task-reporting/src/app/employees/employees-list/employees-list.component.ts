@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee';
+import { EmployeesService } from '../employees.service';
 
 @Component({
   selector: 'employees-list',
@@ -9,12 +10,23 @@ import { Employee } from '../models/employee';
 export class EmployeesListComponent implements OnInit {
 
   averageSalary: number;
-  employees : Employee[] = []
+  employees: Employee[];
   
-  constructor() { }
+  constructor(private employeesService : EmployeesService) { }
 
   ngOnInit() {
-    this.countAverageSalary();
+    this.loadEmployees();
+    
+  }
+
+  loadEmployees() : void {
+    this.employeesService.getCars().subscribe((employees) => {
+      this.employees = employees;
+      this.countAverageSalary();
+    }, error => {
+      alert("An error has occured");
+    });
+    
   }
 
   countAverageSalary() : void {

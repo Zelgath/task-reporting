@@ -23,7 +23,7 @@ public class Employee {
 
     private String phoneNumber;
 
-    private LocalDate hireDate;
+    private String hireDate;
 
     private String job_id;
 
@@ -37,7 +37,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, LocalDate hireDate, String job_id, int salary, int commissionPct, int managerId, int departmentId) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, String hireDate, String job_id, int salary, int commissionPct, int managerId, int departmentId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,11 +90,11 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
