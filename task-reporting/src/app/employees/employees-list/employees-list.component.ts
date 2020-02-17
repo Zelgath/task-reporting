@@ -20,11 +20,9 @@ export class EmployeesListComponent implements OnInit {
   }
 
   loadEmployees() : void {
-    this.employeesService.getCars().subscribe((employees) => {
+    this.employeesService.getEmployees().subscribe((employees) => {
       this.employees = employees;
       this.countAverageSalary();
-    }, error => {
-      alert("An error has occured");
     });
     
   }

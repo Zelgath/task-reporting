@@ -4,6 +4,7 @@ import { EmployeesListComponent } from './employees-list/employees-list.componen
 import { AverageSalaryComponent } from './average-salary/average-salary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesService } from './employees.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,7 @@ import { EmployeesService } from './employees.service';
   declarations: [EmployeesListComponent, AverageSalaryComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    ReactiveFormsModule
   ],
   providers: [EmployeesService]
 })
