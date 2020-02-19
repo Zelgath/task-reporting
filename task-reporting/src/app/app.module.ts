@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EmployeesModule } from './employees/employees.module';
 import { EmployeesService } from './employees/employees.service';
 import { PhoneNumberFormattingPipe } from './shared-module/pipes/phone-number-formatting.pipe';
+import { CoreModule } from './core-module/core.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PhoneNumberFormattingPipe } from './shared-module/pipes/phone-number-fo
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    EmployeesModule
+    EmployeesModule,
+    CoreModule
   ],
   providers: [EmployeesService],
   bootstrap: [AppComponent]
