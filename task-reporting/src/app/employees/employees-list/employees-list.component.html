@@ -15,7 +15,7 @@
                     <tr *ngFor="let employee of employees;let i = index">
                         <td > {{ employee?.firstName }} {{ employee?.lastName }}</td>
                         <td> {{ employee?.phoneNumber | phoneNumberFormatting }} </td>
-                        <td> {{ employee?.jobId }} </td>
+                        <td> {{ employee?.jobId | jobIdFormatting}} </td>
                         <td> {{ employee?.departmentId }} </td>
                         <td> {{ employee?.salary }}</td>
                     </tr>
