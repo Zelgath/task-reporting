@@ -10,7 +10,9 @@ import { EmployeesService } from '../employees.service';
 export class EmployeesListComponent implements OnInit {
 
   averageSalary: number;
+  averageSalaryToShow: number;
   employees: Employee[];
+  isAverageSalaryToShowInitialized: boolean;
   
   constructor(private employeesService : EmployeesService) { }
 
@@ -31,6 +33,11 @@ export class EmployeesListComponent implements OnInit {
     this.averageSalary = this.employees
     .map((employee) => employee.salary)
     .reduce((prev, next) => (prev + next))/this.employees.length;
+  }
+
+  onShownAverageSalary(averageSalary : number) : void {
+    this.averageSalaryToShow = averageSalary;
+    this.isAverageSalaryToShowInitialized = true;
   }
 
 }

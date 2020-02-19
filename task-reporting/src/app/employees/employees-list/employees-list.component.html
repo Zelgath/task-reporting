@@ -36,5 +36,12 @@
             </ng-template>
         </div>
     </div>
-    <tr-average-salary  *ngIf="employees.length > 0;" [averageSalary]="averageSalary"></tr-average-salary>
+    <tr-average-salary  *ngIf="employees && employees.length > 0;" [averageSalary]="averageSalary" (shownAverageSalary)="onShownAverageSalary($event)"></tr-average-salary>
+    <div class="row" *ngIf="averageSalary && isAverageSalaryToShowInitialized">
+        <div class="col-sm-12">
+            <div class="average-salary">
+                <p class="text-right">AVERAGE SALARY: {{ averageSalaryToShow | number}} PLN</p>
+            </div>
+        </div>
+    </div>
 </div>
