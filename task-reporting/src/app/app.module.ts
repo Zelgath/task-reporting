@@ -6,10 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EmployeesModule } from './employees/employees.module';
 import { EmployeesService } from './employees/employees.service';
+import { PhoneNumberFormattingPipe } from './shared-module/pipes/phone-number-formatting.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

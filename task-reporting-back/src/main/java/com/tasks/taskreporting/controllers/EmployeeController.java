@@ -56,7 +56,7 @@ public class EmployeeController {
         employee.setEmail(employeeDetails.getEmail());
         employee.setPhoneNumber(employeeDetails.getPhoneNumber());
         employee.setHireDate(employeeDetails.getHireDate());
-        employee.setJob_id(employeeDetails.getJob_id());
+        employee.setJobId(employeeDetails.getJobId());
         employee.setSalary(employeeDetails.getSalary());
         employee.setManagerId(employeeDetails.getManagerId());
         employee.setDepartmentId(employeeDetails.getDepartmentId());

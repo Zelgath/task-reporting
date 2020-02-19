@@ -7,16 +7,16 @@
                         <th>employee</th>
                         <th>unit</th>
                         <th>position</th>
-                        <th>location</th>
+                        <th>Department Id</th>
                         <th>salary</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of employees;let i = index">
                         <td > {{ employee?.firstName }} {{ employee?.lastName }}</td>
-                        <td> {{ employee?.phoneNumber }} </td>
-                        <td> {{ employee?.hireDate }} </td>
+                        <td> {{ employee?.phoneNumber | phoneNumberFormatting }} </td>
                         <td> {{ employee?.jobId }} </td>
+                        <td> {{ employee?.departmentId }} </td>
                         <td> {{ employee?.salary }}</td>
                     </tr>
                 </tbody>

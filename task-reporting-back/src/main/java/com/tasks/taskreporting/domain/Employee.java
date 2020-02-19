@@ -25,7 +25,7 @@ public class Employee {
 
     private String hireDate;
 
-    private String job_id;
+    private String jobId;
 
     private int salary;
 
@@ -37,14 +37,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, String hireDate, String job_id, int salary, int commissionPct, int managerId, int departmentId) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, String hireDate, String jobId, int salary, int commissionPct, int managerId, int departmentId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.hireDate = hireDate;
-        this.job_id = job_id;
+        this.jobId = jobId;
         this.salary = salary;
         this.managerId = managerId;
         this.departmentId = departmentId;
@@ -98,12 +98,12 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public String getJob_id() {
-        return job_id;
+    public String getJobId() {
+        return jobId;
     }
 
-    public void setJob_id(String job_id) {
-        this.job_id = job_id;
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
     public int getSalary() {
@@ -140,7 +140,7 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", hireDate=" + hireDate +
-                ", job_id='" + job_id + '\'' +
+                ", job_id='" + jobId + '\'' +
                 ", salary=" + salary +
                 ", managerId=" + managerId +
                 ", departmentId=" + departmentId +

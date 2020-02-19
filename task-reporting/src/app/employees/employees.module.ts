@@ -5,6 +5,8 @@ import { AverageSalaryComponent } from './average-salary/average-salary.componen
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesService } from './employees.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneNumberFormattingPipe } from '../shared-module/pipes/phone-number-formatting.pipe';
+import { SharedModule } from '../shared-module/shared.module';
 
 
 
@@ -13,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [EmployeesListComponent, AverageSalaryComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [EmployeesService]
 })
