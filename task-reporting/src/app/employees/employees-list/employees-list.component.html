@@ -40,8 +40,11 @@
     <div class="row" *ngIf="averageSalary && isAverageSalaryToShowInitialized">
         <div class="col-sm-12">
             <div class="average-salary">
-                <p class="text-right">AVERAGE SALARY: {{ averageSalaryToShow | number}} PLN</p>
+                <p class="text-right">AVERAGE SALARY: {{ averageSalaryToShow | number}} PLN
+                <button class="btn btn-danger btn-sm float-left" (click)="hideAverageSalary()">HIDE AVERAGE SALARY</button>
+            </p>
             </div>
         </div>
     </div>
+    
 </div>

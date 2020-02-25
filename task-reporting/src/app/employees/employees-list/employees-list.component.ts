@@ -40,4 +40,8 @@ export class EmployeesListComponent implements OnInit {
     this.isAverageSalaryToShowInitialized = true;
   }
 
+  hideAverageSalary() : void {
+    this.isAverageSalaryToShowInitialized = false;
+  }
+
 }
