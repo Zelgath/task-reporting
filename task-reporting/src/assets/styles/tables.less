@@ -1,13 +1,13 @@
 @import 'variables.less';
 
 .tr-table{
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
     background: @light-grey;
-    border: 2px solid @orange;
+    border: 2px solid @black;
 
     thead {
-        border: 2px solid @orange;
+        border: 2px solid @black;
         
     }
 
@@ -22,14 +22,21 @@
         text-transform: uppercase;
         color: @black;
         border: 3px solid @black;
-        
-    
+    }
+    th:hover {
+        background: @silver;
+        transition: linear 300ms;
     }
 
     td {
         color: @black;
-        border: 2px solid @orange;
+        border: 2px solid @black;
         text-align: center;
+    }
+
+    tr:hover {
+        background: @light-grey;
+        transition: linear 300ms;
     }
 
     .row-error {
