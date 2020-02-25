@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { EmployeesModule } from './employees/employees.module';
 import { EmployeesService } from './employees/employees.service';
-import { PhoneNumberFormattingPipe } from './shared-module/pipes/phone-number-formatting.pipe';
 import { CoreModule } from './core-module/core.module';
+import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { CoreModule } from './core-module/core.module';
     FormsModule,
     HttpClientModule,
     EmployeesModule,
-    CoreModule
+    CoreModule,
+    RouterModule.forRoot([
+      { path: 'employees', component: <any>EmployeesListComponent}
+    ])
   ],
   providers: [EmployeesService],
   bootstrap: [AppComponent]
