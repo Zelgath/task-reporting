@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employees;let i = index">
+                    <tr class="employee-list-table-row" *ngFor="let employee of employees;let i = index">
                         <td > {{ employee?.firstName }} {{ employee?.lastName }}</td>
                         <td> {{ employee?.phoneNumber | phoneNumberFormatting }} </td>
                         <td> {{ employee?.jobId | jobIdFormatting}} </td>
