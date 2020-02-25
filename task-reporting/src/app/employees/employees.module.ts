@@ -7,12 +7,13 @@ import { EmployeesService } from './employees.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneNumberFormattingPipe } from '../shared-module/pipes/phone-number-formatting.pipe';
 import { SharedModule } from '../shared-module/shared.module';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 
 @NgModule({
   exports: [EmployeesListComponent],
-  declarations: [EmployeesListComponent, AverageSalaryComponent],
+  declarations: [EmployeesListComponent, AverageSalaryComponent, EmployeeDetailsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
