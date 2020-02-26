@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneNumberFormattingPipe } from '../shared-module/pipes/phone-number-formatting.pipe';
 import { SharedModule } from '../shared-module/shared.module';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   providers: [EmployeesService]
 })
