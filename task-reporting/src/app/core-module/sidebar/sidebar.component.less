@@ -1,0 +1,36 @@
+@import '../../../assets/styles/variables.less';
+
+.sidebar {
+    width: 180px;
+    background: @dark-grey;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+// .logo {
+//     margin: 30px auto;
+//     width: 120px;
+//     display: block;
+// }
+
+ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        color: @silver;
+        padding: 10px;
+        border-bottom: 1px solid @silver;
+    }
+    li:hover {
+        background: @light-grey;
+        transition: linear 300ms;
+    }
+    li.active {
+        background: @orange;
+    }
+}
