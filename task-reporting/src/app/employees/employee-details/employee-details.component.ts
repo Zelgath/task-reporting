@@ -12,6 +12,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   employee : Employee;
 
+
   constructor(private employeesService : EmployeesService,
               private route : ActivatedRoute) { }
 
@@ -20,6 +21,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   loadEmployee() {
-    this.employee = this.route.snapshot.data['employee']
+    this.employee = this.route.snapshot.data['employee'];
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee';
 import { EmployeesService } from '../employees.service';
+import { SpinnerComponent } from 'src/app/shared-module/spinner/spinner.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'employees-list',
@@ -13,6 +15,7 @@ export class EmployeesListComponent implements OnInit {
   averageSalaryToShow: number;
   employees: Employee[];
   isAverageSalaryToShowInitialized: boolean;
+  showSpinner : boolean = true;
   
   constructor(private employeesService : EmployeesService) { }
 
@@ -24,6 +27,7 @@ export class EmployeesListComponent implements OnInit {
   loadEmployees() : void {
     this.employeesService.getEmployees().subscribe((employees) => {
       this.employees = employees;
+      this,this.showSpinner=false;
       this.countAverageSalary();
     });
     
@@ -42,6 +46,10 @@ export class EmployeesListComponent implements OnInit {
 
   hideAverageSalary() : void {
     this.isAverageSalaryToShowInitialized = false;
+  }
+
+  setSpinnerActive() {
+    this.showSpinner=true;
   }
 
 }
