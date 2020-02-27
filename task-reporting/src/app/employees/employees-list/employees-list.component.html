@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="employee-list-table-row" *ngFor="let employee of employees;let i = index" [routerLink]="['/employees', employee.id]" (click) = "setSpinnerActive()">
+                    <tr class="employee-list-table-row" *ngFor="let employee of employees;let i = index" [routerLink]="['/employees', employee.id]" >
                         <td > {{ employee?.firstName }} {{ employee?.lastName }}</td>
                         <td> {{ employee?.phoneNumber | phoneNumberFormatting }} </td>
                         <td> {{ employee?.jobId | jobIdFormatting}} </td>
@@ -31,7 +31,7 @@
             </table>
             <ng-template #noEmployeesInfo>
                 <div class="no-employees-info">
-                    <p> Currently no Employees in service</p>
+                   
                 </div>
             </ng-template>
         </div>
