@@ -20,11 +20,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   loadEmployee() {
-    const id = +this.route.snapshot.params['id'];
-
-    this.employeesService.getEmployee(id).subscribe((employee) => {
-      this.employee = employee;
-    })
+    this.employee = this.route.snapshot.data['employee']
   }
-
 }

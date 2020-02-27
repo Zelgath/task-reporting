@@ -9,6 +9,7 @@ import { PhoneNumberFormattingPipe } from '../shared-module/pipes/phone-number-f
 import { SharedModule } from '../shared-module/shared.module';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { RouterModule } from '@angular/router';
+import { EmployeeResolve } from './employee-resolve.service';
 
 
 
@@ -21,6 +22,6 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule
   ],
-  providers: [EmployeesService]
+  providers: [EmployeesService, EmployeeResolve]
 })
 export class EmployeesModule { }
