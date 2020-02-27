@@ -52,4 +52,9 @@ export class EmployeesListComponent implements OnInit {
     this.showSpinner=true;
   }
 
+  sortEmployeesByFirstNames() : void {
+    this.employees.sort();
+    this.loadEmployees();
+  }
+
 }
