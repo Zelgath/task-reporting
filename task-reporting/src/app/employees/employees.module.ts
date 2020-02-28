@@ -10,6 +10,7 @@ import { SharedModule } from '../shared-module/shared.module';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { RouterModule } from '@angular/router';
 import { EmployeeResolve } from './employee-resolve.service';
+import {MatSortModule} from '@angular/material'
 
 
 
@@ -20,7 +21,8 @@ import { EmployeeResolve } from './employee-resolve.service';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    MatSortModule
   ],
   providers: [EmployeesService, EmployeeResolve]
 })

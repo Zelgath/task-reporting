@@ -10,6 +10,8 @@ import { EmployeesService } from './employees/employees.service';
 import { CoreModule } from './core-module/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { EmployeesRoutingModule } from './employees/employees-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSortModule } from '@angular/material';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { EmployeesRoutingModule } from './employees/employees-routing.module';
     EmployeesModule,
     CoreModule,
     AppRoutingModule,
-    EmployeesRoutingModule
+    EmployeesRoutingModule,
+    NoopAnimationsModule,
+    MatSortModule
   ],
   providers: [EmployeesService],
   bootstrap: [AppComponent]
