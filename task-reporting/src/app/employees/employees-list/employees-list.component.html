@@ -9,18 +9,18 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <table *ngIf="employees && employees.length > 0; else noEmployeesInfo" matSort (matSortChange) = "sortEmployees($event)" class="tr-table table">
+            <table *ngIf="employees && employees.length > 0; else noEmployeesInfo" matSort (matSortChange)="sortEmployees($event)" class="tr-table table">
                 <thead>
                     <tr>
-                        <th mat-sort-header = "lastName">employee</th>
-                        <th mat-sort-header = "phoneNumber">phone number</th>
-                        <th mat-sort-header = "jobId">position</th>
-                        <th mat-sort-header = "departmentId">Department Id</th>
-                        <th mat-sort-header = "salary">salary</th>
+                        <th mat-sort-header="lastName">EMPLOYEE</th>
+                        <th mat-sort-header="phoneNumber">PHONE NUMBER</th>
+                        <th mat-sort-header="jobId">POSITION</th>
+                        <th mat-sort-header="departmentId">DEPARTMENT ID</th>
+                        <th mat-sort-header="salary">SALARY</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="employee-list-table-row" *ngFor="let employee of sortedEmployees;let i = index" [routerLink]="['/employees', employee.id]" >
+                    <tr class="employee-list-table-row" *ngFor="let employee of employees;let i = index" [routerLink]="['/employees', employee.id]" >
                         <td > {{ employee?.firstName }} {{ employee?.lastName }}</td>
                         <td> {{ employee?.phoneNumber | phoneNumberFormatting }} </td>
                         <td> {{ employee?.jobId | jobIdFormatting}} </td>
