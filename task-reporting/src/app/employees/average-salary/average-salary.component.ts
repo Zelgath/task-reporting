@@ -9,8 +9,14 @@ export class AverageSalaryComponent {
   @Input() averageSalary : number;
   @Output() shownAverageSalary : EventEmitter<number> = new EventEmitter<number>();
 
+  isAverageSalaryActive : boolean = true;
+
   showAverageSalary() : void {
     this.shownAverageSalary.emit(this.averageSalary);
+  }
+
+  disableAverageSalary () : void {
+    this.isAverageSalaryActive = false;
   }
 
 }
