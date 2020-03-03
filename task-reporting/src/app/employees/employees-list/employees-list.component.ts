@@ -19,6 +19,7 @@ export class EmployeesListComponent implements OnInit {
   isAverageSalaryToShowInitialized: boolean;
   showSpinner : boolean = true;
   sortedEmployees : Employee [];
+  isAverageSalaryOnView : boolean = false;
   
   constructor(private employeesService : EmployeesService) {
     
@@ -93,14 +94,18 @@ export class EmployeesListComponent implements OnInit {
   onShownAverageSalary(averageSalary : number) : void {
     this.averageSalaryToShow = averageSalary;
     this.isAverageSalaryToShowInitialized = true;
+    this.isAverageSalaryOnView = true;
   }
+
 
   hideAverageSalary() : void {
     this.isAverageSalaryToShowInitialized = false;
+    this.isAverageSalaryOnView = false;
   }
 
   setSpinnerActive() {
     this.showSpinner=true;
   }
+
 
 }

@@ -38,12 +38,11 @@
             </ng-template>
         </div>
     </div>
-    <tr-average-salary  *ngIf="employees && employees.length > 0;" [averageSalary]="averageSalary" (shownAverageSalary)="onShownAverageSalary($event)"></tr-average-salary>
-    <div class="row" *ngIf="averageSalary && isAverageSalaryToShowInitialized">
+    <tr-average-salary  *ngIf="employees && employees.length > 0" [averageSalary]="averageSalary" (shownAverageSalary)="onShownAverageSalary($event)"></tr-average-salary>
+    <div class="row" *ngIf="averageSalary && isAverageSalaryToShowInitialized && averageSalaryToShow">
         <div class="col-sm-12">
             <div class="average-salary">
                 <p class="text-right">AVERAGE SALARY: {{ averageSalaryToShow | number}} PLN
-                <button class="disabling-btn float-left" (click)="hideAverageSalary()">HIDE AVERAGE SALARY</button>
             </p>
             </div>
         </div>

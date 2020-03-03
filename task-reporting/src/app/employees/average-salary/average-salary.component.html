@@ -1,9 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
         <div class=" average-salary">
-        <button (click)="showAverageSalary()" type="button" class="enabling-btn float-right">
+        <button *ngIf="isAverageSalaryActive==false;else disablingButton" (click)="showAverageSalary()" type="button" class="enabling-btn float-right">
             SHOW AVERAGE SALARY
         </button>
+        <ng-template #disablingButton>
+            <button (click)="disableAverageSalary()" type="button" class="disabling-btn float-right">HIDE AVERAGE SALARY</button>
+        </ng-template>
     </div>
     </div>
 </div>
