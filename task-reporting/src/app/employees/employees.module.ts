@@ -11,12 +11,13 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { RouterModule } from '@angular/router';
 import { EmployeeResolve } from './employee-resolve.service';
 import { MatSortModule } from '@angular/material';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 
 
 @NgModule({
   exports: [EmployeesListComponent],
-  declarations: [EmployeesListComponent, AverageSalaryComponent, EmployeeDetailsComponent],
+  declarations: [EmployeesListComponent, AverageSalaryComponent, EmployeeDetailsComponent, AddEmployeeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
