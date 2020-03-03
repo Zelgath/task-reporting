@@ -4,7 +4,7 @@ import { EmployeesListComponent } from './employees-list/employees-list.componen
 import { AverageSalaryComponent } from './average-salary/average-salary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesService } from './employees.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PhoneNumberFormattingPipe } from '../shared-module/pipes/phone-number-formatting.pipe';
 import { SharedModule } from '../shared-module/shared.module';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
@@ -16,14 +16,15 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 
 @NgModule({
-  exports: [EmployeesListComponent],
+  exports: [EmployeesListComponent, AddEmployeeComponent],
   declarations: [EmployeesListComponent, AverageSalaryComponent, EmployeeDetailsComponent, AddEmployeeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule
   ],
   providers: [EmployeesService, EmployeeResolve]
 })

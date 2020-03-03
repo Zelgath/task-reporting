@@ -8,10 +8,13 @@
     </div>
 </tr-header>
 <tr-spinner *ngIf="showSpinner"></tr-spinner>
-<div class="container">
+<button  *ngIf="isAddEmployeeButtonActive && showSpinner==false; else backToEmployeesListButton" type="button" (click)="showEmployeeAddingPanel()" class="action-yellow-btn float left">ADD EMPLOYEE</button>
+<ng-template #backToEmployeesListButton>
+    <button type="button" (click)="hideEmployeeAddingPanel()" class="action-blue-btn float left">BACK TO EMPLOYEE LIST</button>
+</ng-template>
+<div *ngIf="isAddingPanelOnView==false;else employeeAddingPanel" class="container">
     <div class="row">
         <div class="col-sm-12">
-            <button type="button" class="action-yellow-btn float left">ADD</button>
             <table *ngIf="employees && employees.length > 0; else noEmployeesInfo" matSort (matSortChange)="sortEmployees($event)" class="tr-table table">
                 <thead>
                     <tr>
@@ -81,3 +84,6 @@
     </div>
     
 </div>
+<ng-template #employeeAddingPanel>
+    <tr-add-employee></tr-add-employee>
+</ng-template>

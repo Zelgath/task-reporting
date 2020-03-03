@@ -20,9 +20,10 @@ export class EmployeesListComponent implements OnInit {
   showSpinner : boolean = true;
   sortedEmployees : Employee [];
   isAverageSalaryOnView : boolean = false;
+  isAddingPanelOnView : boolean = false;
+  isAddEmployeeButtonActive : boolean = true;
   
   constructor(private employeesService : EmployeesService) {
-    
    }
 
    sortEmployees(sort: Sort) {
@@ -44,32 +45,14 @@ export class EmployeesListComponent implements OnInit {
       });
     }
 
-  //  sortEmployees(sort : Sort) : void {
-  //    switch (sort.active) {
-  //    case 'lastName': this.employees.sort((a,b) => a.lastName < b.lastName ? -1 : 1);
-  //    case 'phoneNumber': this.employees.sort((a,b) => a.phoneNumber < b.phoneNumber ? -1: 1);
-  //    case 'jobId': this.employees.sort((a,b) => a.jobId < b.jobId ? -1: 1);
-  //    case 'departmentId': this.employees.sort((a,b) => a.departmentId < b.departmentId ? -1: 1);
-  //    case 'salary': this.employees.sort((a,b) => a.salary < b.salary ? -1: 1);
-  //    default: 0;
-  //    }
-  //  }
-
-
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
-
-
 
   ngOnInit() {
     this.loadEmployees();
     
   }
-
-  // ngAfterViewChecked(): void {
-  //   this.sortedEmployees = this.employees.slice();
-  // }
 
   loadEmployees() : void {
     this.employeesService.getEmployees().subscribe((employees) => {
@@ -77,12 +60,7 @@ export class EmployeesListComponent implements OnInit {
       this.showSpinner=false;
       this.countAverageSalary();
     });
-   
-    
   }
-
-  
-
 
   countAverageSalary() : void {
     this.averageSalary = this.employees
@@ -97,7 +75,6 @@ export class EmployeesListComponent implements OnInit {
     this.isAverageSalaryOnView = true;
   }
 
-
   hideAverageSalary() : void {
     this.isAverageSalaryToShowInitialized = false;
     this.isAverageSalaryOnView = false;
@@ -107,5 +84,13 @@ export class EmployeesListComponent implements OnInit {
     this.showSpinner=true;
   }
 
+  showEmployeeAddingPanel() : void {
+    this.isAddingPanelOnView = true;
+    this.isAddEmployeeButtonActive = false;
+  }
 
+  hideEmployeeAddingPanel() : void {
+    this.isAddingPanelOnView = false;
+    this.isAddEmployeeButtonActive = true;
+  }
 }
