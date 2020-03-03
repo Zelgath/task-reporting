@@ -10,7 +10,7 @@
 <tr-spinner *ngIf="showSpinner"></tr-spinner>
 <button  *ngIf="isAddEmployeeButtonActive && showSpinner==false; else backToEmployeesListButton" type="button" (click)="showEmployeeAddingPanel()" class="action-yellow-btn float left">ADD EMPLOYEE</button>
 <ng-template #backToEmployeesListButton>
-    <button type="button" (click)="hideEmployeeAddingPanel()" class="action-blue-btn float left">BACK TO EMPLOYEE LIST</button>
+    <button *ngIf="showSpinner==false" type="button" (click)="hideEmployeeAddingPanel()" class="action-blue-btn float left">BACK TO EMPLOYEE LIST</button>
 </ng-template>
 <div *ngIf="isAddingPanelOnView==false;else employeeAddingPanel" class="container">
     <div class="row">

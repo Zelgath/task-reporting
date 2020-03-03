@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'tr-add-employee',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  constructor() { }
+  employeeForm : FormGroup;
+
+  constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit() {
+    this.employeeForm = this.buildEmployeeForm();
+  }
+
+  buildEmployeeForm() {
+    return this.formBuilder.group ({
+      firstName : '',
+      lastName : '',
+      email : '',
+      phoneNumber : '',
+      hireDate : '',
+      jobId : '',
+      salary : '',
+      managerId : '',
+      departmentId : ''
+    });
   }
 
 }

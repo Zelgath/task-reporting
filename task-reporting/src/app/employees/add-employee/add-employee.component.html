@@ -1,43 +1,57 @@
 <p class="data-header">ADD A NEW EMPLOYEE</p>
 
 <div class="data-container">
-    <form>
+    <form [formGroup]="employeeForm">
         <div class="row form-group">
             <div class="col-sm-4">
                 <label>First name</label>
-                <input type="text" class="form-control" placeholder="First Name">
+                <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
             </div>
             <div class="col-sm-4">
                 <label>Last name</label>
-                <input type="text" class="form-control" placeholder="Last Name">
+                <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
             </div>
             <div class="col-sm-4">
                 <label>e-mail</label>
-                <input type="text" class="form-control" placeholder="E-mail">
+                <input formControlName="email" type="text" class="form-control" placeholder="E-mail">
             </div>
         </div>
         <div class="row form-group">
             <div class="col-sm-4">
-                
+                <label>Phone Number</label>
+                <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number">
             </div>
             <div class="col-sm-4">
-                
+                    <mat-label>Hire Date  </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="hireDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
             </div>
             <div class="col-sm-4">
-                
+                <label>Job Id</label>
+                <input formControlName="jobId" type="text" class="form-control" placeholder="Job Id">
             </div>          
         </div>
         <div class="row form-group">
             <div class="col-sm-4">
-                
+                <label>Salary</label>
+                <input formControlName="salary" type="text" class="form-control" placeholder="Salary">
             </div>
             <div class="col-sm-4">
-                
+                <label>Manager Id</label>
+                <input formControlName="managerId" type="text" class="form-control" placeholder="Manager Id"> 
             </div>
             <div class="col-sm-4">
-                
+                <label>Department Id</label>
+                <input formControlName="departmentId" type="text" class="form-control" placeholder="Department Id">
             </div>          
         </div>
 
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="submit" class="btn action-yellow-btn float-right">SUBMIT</button>
+            </div>
+        </div>
     </form>
+    <pre> {{ employeeForm.value | json }}</pre>
 </div>

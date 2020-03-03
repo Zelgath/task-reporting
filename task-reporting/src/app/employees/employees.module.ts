@@ -10,7 +10,7 @@ import { SharedModule } from '../shared-module/shared.module';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { RouterModule } from '@angular/router';
 import { EmployeeResolve } from './employee-resolve.service';
-import { MatSortModule } from '@angular/material';
+import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 
@@ -24,7 +24,11 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     SharedModule,
     RouterModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [EmployeesService, EmployeeResolve]
 })
