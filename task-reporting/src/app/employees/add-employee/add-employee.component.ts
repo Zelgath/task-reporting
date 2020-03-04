@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'tr-add-employee',
@@ -18,15 +18,15 @@ export class AddEmployeeComponent implements OnInit {
 
   buildEmployeeForm() {
     return this.formBuilder.group ({
-      firstName : '',
-      lastName : '',
-      email : '',
-      phoneNumber : '',
-      hireDate : '',
-      jobId : '',
-      salary : '',
-      managerId : '',
-      departmentId : ''
+      firstName : ['', Validators.required],
+      lastName : ['', Validators.required],
+      email : ['', Validators.required],
+      phoneNumber : ['', [Validators.required, Validators.minLength(9)]],
+      hireDate : ['', Validators.required],
+      jobId : ['', Validators.required],
+      salary : ['', Validators.required],
+      managerId : ['', Validators.required],
+      departmentId : ['', Validators.required]
     });
   }
 
