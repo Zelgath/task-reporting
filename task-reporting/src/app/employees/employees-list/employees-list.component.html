@@ -15,7 +15,7 @@
 <div *ngIf="isAddingPanelOnView==false;else employeeAddingPanel" class="container">
     <div class="row">
         <div class="col-sm-12">
-            <table *ngIf="employees && employees.length > 0; else noEmployeesInfo" matSort (matSortChange)="sortEmployees($event)" class="tr-table table">
+            <table *ngIf="employees && employees.length > 0" matSort (matSortChange)="sortEmployees($event)" class="tr-table table">
                 <thead>
                     <tr>
                         <th mat-sort-header="lastName">EMPLOYEE</th>
@@ -35,11 +35,11 @@
                     </tr>
                 </tbody>
             </table>
-            <ng-template #noEmployeesInfo>
+            <!-- <ng-template #noEmployeesInfo>
                 <div class="no-employees-info">
                    
                 </div>
-            </ng-template>
+            </ng-template> -->
         </div>
     </div>
     <tr-average-salary  *ngIf="employees && employees.length > 0" [averageSalary]="averageSalary" (shownAverageSalary)="onShownAverageSalary($event)"></tr-average-salary>
