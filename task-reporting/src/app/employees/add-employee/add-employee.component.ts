@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DateChangerComponent } from 'src/app/shared-module/date-changer/date-changer.component';
 
 @Component({
   selector: 'tr-add-employee',
@@ -9,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddEmployeeComponent implements OnInit {
 
   employeeForm : FormGroup;
+
+  toShow : string = this.changeDate("2020-03-04T23:00:00.000Z");
 
   constructor(private formBuilder : FormBuilder) { }
 
@@ -29,5 +32,12 @@ export class AddEmployeeComponent implements OnInit {
       departmentId : ['', Validators.required]
     });
   }
+
+  changeDate(inputDate : string) : string {
+    const changedDate = inputDate.replace("T23:00:00.000Z", "");
+    const formattedDate = changedDate.replace("-", "/");
+    const outputDate = formattedDate.replace(formattedDate.slice(-2),0 + (+formattedDate.slice(-2) + 1).toString())
+    return outputDate;
+}
 
 }

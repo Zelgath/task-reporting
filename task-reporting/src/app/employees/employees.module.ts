@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { EmployeeResolve } from './employee-resolve.service';
 import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { DateChangerComponent } from '../shared-module/date-changer/date-changer.component';
 
 
 
@@ -30,6 +31,6 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     MatInputModule,
     MatNativeDateModule
   ],
-  providers: [EmployeesService, EmployeeResolve]
+  providers: [EmployeesService, EmployeeResolve, DateChangerComponent]
 })
 export class EmployeesModule { }

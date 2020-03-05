@@ -17,5 +17,12 @@ import { AppDateAdapter, APP_DATE_FORMATS} from './date.adapter';
 })
 export class DateChangerComponent {
 
+    changeDate(inputDate : string) : string {
+        const changedDate = inputDate.replace("T23:00:00.000Z", "");
+        const formattedDate = changedDate.replace("-", "/");
+        const outputDate = formattedDate.replace(formattedDate.slice(-2), formattedDate.slice(-2) + 1)
+        return outputDate;
+    }
+
 
 }

@@ -22,7 +22,10 @@
                 <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number">
             </div>
             <div class="col-sm-4">
-                    <tr-date-changer></tr-date-changer>
+                    <mat-label>Hire Date </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="hireDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
             </div>
             <div class="col-sm-4">
                 <label>Job Id</label>
@@ -51,5 +54,10 @@
         </div>
     </form>
     <pre> {{ employeeForm.value | json }}</pre>
-    <pre> {{ employeeForm.get('firstName') | json }}</pre>
+    <pre> {{ employeeForm.get('firstName').valid| json }}</pre>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <p> {{ toShow }} </p>
+    </div>
 </div>
