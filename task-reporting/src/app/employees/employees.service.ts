@@ -22,4 +22,8 @@ export class EmployeesService {
   return this.http.get<Employee>(this.apiUrl + `/${id}`);
 }
 
+  addEmployee(data) : Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl, data);
+  }
+
 }

@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateChangerComponent } from 'src/app/shared-module/date-changer/date-changer.component';
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared-module/date-changer/date.adapter';
+import { EmployeesService } from '../employees.service';
+import { EmployeesListComponent } from '../employees-list/employees-list.component';
+
 
 @Component({
   selector: 'tr-add-employee',
   templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.less']
+  styleUrls: ['./add-employee.component.less'],
+  providers: [
+    {provide: DateAdapter, useClass: AppDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+  ]
 })
 export class AddEmployeeComponent implements OnInit {
 
@@ -13,7 +22,9 @@ export class AddEmployeeComponent implements OnInit {
 
   toShow : string = this.changeDate("2020-03-04T23:00:00.000Z");
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder : FormBuilder,
+              private employeesService : EmployeesService,
+              private employeesList : EmployeesListComponent) { }
 
   ngOnInit() {
     this.employeeForm = this.buildEmployeeForm();
@@ -31,6 +42,13 @@ export class AddEmployeeComponent implements OnInit {
       managerId : ['', Validators.required],
       departmentId : ['', Validators.required]
     });
+  }
+
+  addEmployee() {
+    this.employeesService.addEmployee(this.employeeForm.value).subscribe(() => {
+      this.employeesList.loadEmployees();
+      this.employeesList.hideEmployeeAddingPanel();
+    })
   }
 
   changeDate(inputDate : string) : string {
