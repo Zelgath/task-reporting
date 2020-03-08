@@ -6,10 +6,12 @@
             <div class="col-sm-4">
                 <label>First name</label>
                 <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+                <p *ngIf="!employeeForm.get('firstName').valid && employeeForm.get('firstName').dirty" class="error">This field is required!</p>
             </div>
             <div class="col-sm-4">
                 <label>Last name</label>
                 <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
+                <p *ngIf="!employeeForm.get('lastName').valid && employeeForm.get('lastName').dirty" class="error">This field is required!</p>
             </div>
             <div class="col-sm-4">
                 <label>e-mail</label>
@@ -20,6 +22,7 @@
             <div class="col-sm-4">
                 <label>Phone Number</label>
                 <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number">
+                <p *ngIf="!employeeForm.get('phoneNumber').valid && employeeForm.get('phoneNumber').dirty" class="error">This field is required and must contain at least 9 characters</p>
             </div>
             <div class="col-sm-4">
                     <mat-label>Hire Date </mat-label>
@@ -49,7 +52,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <button type="submit" class="btn action-yellow-btn float-right" (click) = "addEmployee()">SUBMIT</button>
+                <button [disabled]="employeeForm.invalid" type="submit" class="btn action-yellow-btn float-right" (click) = "addEmployee()">SUBMIT</button>
             </div>
         </div>
     </form>
