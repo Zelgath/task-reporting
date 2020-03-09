@@ -2,6 +2,7 @@ package com.tasks.taskreporting.controllers;
 
 import com.tasks.taskreporting.domain.Employee;
 import com.tasks.taskreporting.domain.repositories.EmployeeRepository;
+import com.tasks.taskreporting.utils.DateFormatterForAngularMaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -23,6 +24,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private DateFormatterForAngularMaterial dffam;
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
@@ -44,6 +47,7 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee)  {
+        employee.setHireDate(dffam.changeData(employee.getHireDate()));
         return employeeRepository.save(employee);
     }
 
@@ -55,7 +59,7 @@ public class EmployeeController {
         employee.setLastName(employeeDetails.getLastName());
         employee.setEmail(employeeDetails.getEmail());
         employee.setPhoneNumber(employeeDetails.getPhoneNumber());
-        employee.setHireDate(employeeDetails.getHireDate());
+        employee.setHireDate(dffam.changeData(employeeDetails.getHireDate()));
         employee.setJobId(employeeDetails.getJobId());
         employee.setSalary(employeeDetails.getSalary());
         employee.setManagerId(employeeDetails.getManagerId());
