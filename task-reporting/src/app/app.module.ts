@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MomentUtcDateAdapter } from './shared-module/moment-utc-date-adapter';
+import { AdminModule } from './admin/admin.module';
 
 
  
@@ -32,7 +33,8 @@ import { MomentUtcDateAdapter } from './shared-module/moment-utc-date-adapter';
     AppRoutingModule,
     EmployeesRoutingModule,
     NoopAnimationsModule,
-    MatSortModule
+    MatSortModule,
+    AdminModule
   ],
   providers: [EmployeesService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

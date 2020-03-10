@@ -4,7 +4,7 @@
             <li [routerLink]="['/employees']" [routerLinkActive]="'active'">Employees</li>
             <li>Statistics</li>
             <li>Submit Work Time</li>
-            <li (click) = "changeIsAdminPanelOpened()">Admin panel
+            <li [routerLink]="['/admin']" [routerLinkActive]="'active'" (click) = "changeIsAdminPanelOpened()">Admin panel
                 <tr-nested-sidebar *ngIf="isAdminPanelOpened">
                 </tr-nested-sidebar>
             </li>
