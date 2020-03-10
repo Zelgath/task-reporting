@@ -1,10 +1,13 @@
 <div class="sidebar">
     <nav>
-        <ul>
+        <ul class="main-list">
             <li [routerLink]="['/employees']" [routerLinkActive]="'active'">Employees</li>
             <li>Statistics</li>
-            <li>Add Employee</li>
             <li>Submit Work Time</li>
+            <li (click) = "changeIsAdminPanelOpened()">Admin panel
+                <tr-nested-sidebar *ngIf="isAdminPanelOpened">
+                </tr-nested-sidebar>
+            </li>
         </ul>
     </nav>
 </div>

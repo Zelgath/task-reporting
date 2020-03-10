@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { NestedSidebarComponent } from './sidebar/nested-sidebar/nested-sidebar.component';
+
 
 
 
 @NgModule({
-  declarations: [SidebarComponent],
-  exports: [SidebarComponent],
+  declarations: [SidebarComponent, NestedSidebarComponent],
+  exports: [SidebarComponent, NestedSidebarComponent],
   imports: [
     CommonModule,
     RouterModule
