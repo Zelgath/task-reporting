@@ -1,0 +1,34 @@
+@import '../../../../assets/styles/variables.less';
+
+.nested-sidebar {
+    margin-top: 5px;
+    
+    background: @dark-grey;
+    position: relative;
+    width: 176px;
+    left: -9px;
+    height: 410px;
+    
+    
+}
+
+.nested-list {
+    list-style: inherit;
+    position: relative;
+    left: -20px;
+    li {
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        color: @silver;
+        padding: 10px;
+        border-bottom: 1px solid @silver;
+    }
+    li:hover {
+        background: @light-grey;
+        transition: linear 300ms;
+    }
+    li.active {
+        background: @yellow;
+    }
+}

@@ -21,4 +21,8 @@ export class SidebarComponent implements OnInit {
       this.isAdminPanelOpened = true;
     }
   }
+
+  closeAdminPanel () : void {
+    this.isAdminPanelOpened = false;
+  }
 }
