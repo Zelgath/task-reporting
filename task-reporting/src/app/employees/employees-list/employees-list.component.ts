@@ -1,8 +1,6 @@
-import { Component, OnInit, AfterContentInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Employee } from '../models/employee';
 import { EmployeesService } from '../employees.service';
-import { SpinnerComponent } from 'src/app/shared-module/spinner/spinner.component';
-import { ActivatedRoute } from '@angular/router';
 import { Sort } from '@angular/material';
 
 @Component({
@@ -51,7 +49,6 @@ export class EmployeesListComponent implements OnInit {
 
   ngOnInit() {
     this.loadEmployees();
-    
   }
 
   loadEmployees() : void {

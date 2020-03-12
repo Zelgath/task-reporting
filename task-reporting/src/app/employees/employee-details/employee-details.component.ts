@@ -8,23 +8,23 @@ import { EmployeesListComponent } from '../employees-list/employees-list.compone
 @Component({
   selector: 'tr-employee-details',
   templateUrl: './employee-details.component.html',
-  styleUrls: ['./employee-details.component.less']
+  styleUrls: ['./employee-details.component.less'],
+  providers: [EmployeesListComponent]
 })
 export class EmployeeDetailsComponent implements OnInit {
 
   employee : Employee;
   employeeForm : FormGroup;
 
-
   constructor(private employeesService : EmployeesService,
               private route : ActivatedRoute,
               private formBuilder : FormBuilder,
+              private router : Router
               ) { }
-
-              // private employeesList : EmployeesListComponent
 
   ngOnInit() {
     this.loadEmployee();
+    this.employeeForm = this.buildEmployeeForm();
   }
 
   buildEmployeeForm() {
@@ -48,8 +48,7 @@ export class EmployeeDetailsComponent implements OnInit {
   updateEmployee() {
     this.employeesService.updateEmployee(this.employee.id, this.employeeForm.value).subscribe(() => {
       this.loadEmployee();
-      // this.employeesList.loadEmployees();
-      // this.employeesList.hideEmployeeAddingPanel();
+      this.router.navigate(['/employees']);
     })
-  }
+  } 
 }

@@ -4,13 +4,12 @@ import { PhoneNumberFormattingPipe } from './pipes/phone-number-formatting.pipe'
 import { JobIdFormattingPipe } from './pipes/job-id-formatting.pipe';
 import { HeaderComponent } from './header/header.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { DateChangerComponent } from './date-changer/date-changer.component';
 import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 
 
 
 @NgModule({
-  declarations: [PhoneNumberFormattingPipe, JobIdFormattingPipe, HeaderComponent, SpinnerComponent, DateChangerComponent],
+  declarations: [PhoneNumberFormattingPipe, JobIdFormattingPipe, HeaderComponent, SpinnerComponent],
   imports: [
     CommonModule,
     MatDatepickerModule,
@@ -18,6 +17,6 @@ import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateM
     MatInputModule,
     MatNativeDateModule
   ],
-  exports: [PhoneNumberFormattingPipe, JobIdFormattingPipe, HeaderComponent, SpinnerComponent, DateChangerComponent]
+  exports: [PhoneNumberFormattingPipe, JobIdFormattingPipe, HeaderComponent, SpinnerComponent]
 })
 export class SharedModule { }

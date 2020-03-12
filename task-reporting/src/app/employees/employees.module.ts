@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
 import { EmployeeResolve } from './employee-resolve.service';
 import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { DateChangerComponent } from '../shared-module/date-changer/date-changer.component';
 import { MomentUtcDateAdapter } from '../shared-module/moment-utc-date-adapter';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
