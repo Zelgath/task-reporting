@@ -16,8 +16,6 @@ public class DateFormatterForAngularMaterial {
 
     public String changeData(String inputData) {
         String output = inputData.substring(0, 10);
-        LocalDate date = LocalDate.parse(output);
-        String newDate = date.plusDays(1).toString();
-        return newDate;
+        return output;
     }
 }

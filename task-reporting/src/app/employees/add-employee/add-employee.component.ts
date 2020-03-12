@@ -11,10 +11,7 @@ import { EmployeesListComponent } from '../employees-list/employees-list.compone
   selector: 'tr-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.less'],
-  providers: [
-    {provide: DateAdapter, useClass: AppDateAdapter},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
-  ]
+  providers: []
 })
 export class AddEmployeeComponent implements OnInit {
 

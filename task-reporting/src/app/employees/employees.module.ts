@@ -13,6 +13,10 @@ import { EmployeeResolve } from './employee-resolve.service';
 import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DateChangerComponent } from '../shared-module/date-changer/date-changer.component';
+import { MomentUtcDateAdapter } from '../shared-module/moment-utc-date-adapter';
+import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminModule } from '../admin/admin.module';
 
 
 
@@ -30,7 +34,11 @@ import { DateChangerComponent } from '../shared-module/date-changer/date-changer
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
+    BrowserAnimationsModule,
+    AdminModule
   ],
-  providers: [EmployeesService, EmployeeResolve, DateChangerComponent]
+  providers: [EmployeesService, EmployeeResolve, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  { provide: DateAdapter, useClass: MomentUtcDateAdapter }]
 })
 export class EmployeesModule { }
