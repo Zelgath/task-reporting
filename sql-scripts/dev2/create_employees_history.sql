@@ -1,0 +1,20 @@
+CREATE TABLE `employees_history` (
+  `id_employee` int(11) NOT NULL,
+  `employee_first_name` varchar(45) NOT NULL,
+  `employee_last_name` varchar(45) NOT NULL,
+  `employee_email` varchar(45) NOT NULL,
+  `employee_phone_number` varchar(45) NOT NULL,
+  `id_last_job` int(11) NOT NULL,
+  `id_last_location` int(11) NOT NULL,
+  `id_last_contract` int(11) DEFAULT NULL,
+  `id_last_grade` int(11) NOT NULL,
+  PRIMARY KEY (`id_employee`),
+  KEY `id_job_eh_idx` (`id_last_job`),
+  KEY `id_location_eh_idx` (`id_last_location`),
+  KEY `id_contract_eh_idx` (`id_last_contract`),
+  KEY `id_last_grade_idx` (`id_last_grade`),
+  CONSTRAINT `id_contract_eh` FOREIGN KEY (`id_last_contract`) REFERENCES `contracts_history` (`id_contract`),
+  CONSTRAINT `id_job_eh` FOREIGN KEY (`id_last_job`) REFERENCES `jobs` (`id_job`),
+  CONSTRAINT `id_last_grade` FOREIGN KEY (`id_last_grade`) REFERENCES `grades` (`id_grade`),
+  CONSTRAINT `id_location_eh` FOREIGN KEY (`id_last_location`) REFERENCES `locations` (`id_location`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

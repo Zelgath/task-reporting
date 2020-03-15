@@ -1,0 +1,10 @@
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('﻿pl-war','Warsaw','al. Jerozolimskie 5','50-209','Poland');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('nor-osl','Oslo','Storgata 6','NO-7321','Norway');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('pl-wro','Wroclaw','Legnicka-10','25-908','Poland');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('dnk-cop','Copenhagen','Adderals','DNK-891','Denmark');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('it-rom','Rome','Macaroni 8','ITA-988','Italy');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('fr-par','Paris','Baguette 15','90-987','France');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('de-ber','Berlin','Urlaubstrasse 11','75-098','Germany');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('sp-bar','Barcelona','Rambla 90','11-765','Spain');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('por-lis','Lisbon','Helc 123','65-767','Portugal');
+insert into locations(location_description, location_city, location_street, location_postal, location_country) values ('fin-hel','Helsinki','Perka 56','FN-6565','Finland');
