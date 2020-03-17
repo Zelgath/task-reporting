@@ -200,7 +200,7 @@ for project in list_of_projects:
     statement = "insert into projects(project_description, project_client, project_monthly_cost, project_start_date," \
                 " project_end_date, project_total_cost) values ('" + project.description + "','" + project.client + \
                 "','" + project.monthly_cost + "'," + str_to_date(project.start_date) + \
-                str_to_date(project.end_date) +",'" + project.total_cost + "');"
+               "," + str_to_date(project.end_date) +",'" + project.total_cost + "');"
     projects_insert_statements.append(statement)
 
 with open ("projects_insert_statements.sql", "w") as output:
@@ -226,7 +226,7 @@ with open ("managers_insert_statements.sql", "w") as output:
 for contract in list_of_contracts:
     statement = "insert into contracts(contract_type, contract_start_date, contract_end_date, id_grade," \
                 "contract_salary_factor, id_employee) values ('" + contract.type + "'," + \
-                str_to_date(contract.start_date) + str_to_date(contract.end_date) + ",'" + \
+                str_to_date(contract.start_date) + ","+ str_to_date(contract.end_date) + ",'" + \
                 contract.id_grade + "','" + contract.id_employee + "');"
     contracts_insert_statements.append(statement)
 
@@ -243,7 +243,7 @@ for employee in list_of_employees:
                 employee.id_contract_active + "','" + employee.id_manager + "','" + employee.id_department + "','" + \
                 employee.id_grade + "','" + employee.is_manager + "','" + employee.is_officer + "','" + \
                 employee.is_active + "','" + employee.id_project_1 + "','" + employee.id_project_2 + "','" + \
-                employee.id_project_3 + "','" + employee.id_project_4 + "','" + employee.id_project_5 + "');"
+                employee.id_project_3 + "'," + "null" + "," + "null" + ");"
     employees_insert_statements.append(statement)
 
 with open("employees_insert_statements.sql", "w") as output:

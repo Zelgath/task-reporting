@@ -6,48 +6,74 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 @EntityListeners(AuditingEntityListener.class)
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
+    @Column(name = "id_employee")
     private Long id;
-
+    @Column(name = "employee_first_name")
     private String firstName;
-
+    @Column(name = "employee_last_name")
     private String lastName;
-
+    @Column(name = "employee_email")
     private String email;
-
+    @Column(name = "employee_phone_number")
     private String phoneNumber;
-
-    private String hireDate;
-
-    private String jobId;
-
-    private int salary;
-
-
-    private int managerId;
-
-    private int departmentId;
+    @Column(name = "id_job")
+    private Long idJob;
+    @Column(name = "id_location")
+    private Long idLocation;
+    @Column(name = "id_contract_active")
+    private Long idContractActive;
+    @Column(name = "id_manager")
+    private Long idManager;
+    @Column(name = "id_department")
+    private Long idDepartment;
+    @Column(name = "id_grade")
+    private Long idGrade;
+    @Column(name = "is_manager")
+    private boolean isManager;
+    @Column(name = "is_officer")
+    private boolean isOfficer;
+    @Column(name = "is_active")
+    private boolean isActive;
+    @Column(name = "id_project_1")
+    private Long idProject1;
+    @Column(name = "id_project_2")
+    private Long idProject2;
+    @Column(name = "id_project_3")
+    private Long idProject3;
+    @Column(name = "id_project_4")
+    private Long idProject4;
+    @Column(name = "id_project_5")
+    private Long idProject5;
 
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, String hireDate, String jobId, int salary, int commissionPct, int managerId, int departmentId) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Long idJob, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, Long idProject1, Long idProject2, Long idProject3, Long idProject4, Long idProject5) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.hireDate = hireDate;
-        this.jobId = jobId;
-        this.salary = salary;
-        this.managerId = managerId;
-        this.departmentId = departmentId;
+        this.idJob = idJob;
+        this.idLocation = idLocation;
+        this.idContractActive = idContractActive;
+        this.idManager = idManager;
+        this.idDepartment = idDepartment;
+        this.idGrade = idGrade;
+        this.isManager = isManager;
+        this.isOfficer = isOfficer;
+        this.isActive = isActive;
+        this.idProject1 = idProject1;
+        this.idProject2 = idProject2;
+        this.idProject3 = idProject3;
+        this.idProject4 = idProject4;
+        this.idProject5 = idProject5;
     }
 
     public Long getId() {
@@ -90,45 +116,116 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getHireDate() {
-        return hireDate;
+    public Long getIdJob() {
+        return idJob;
     }
 
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
+    public void setIdJob(Long idJob) {
+        this.idJob = idJob;
     }
 
-    public String getJobId() {
-        return jobId;
+    public Long getIdLocation() {
+        return idLocation;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setIdLocation(Long idLocation) {
+        this.idLocation = idLocation;
     }
 
-    public int getSalary() {
-        return salary;
+    public Long getIdContractActive() {
+        return idContractActive;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setIdContractActive(Long idContractActive) {
+        this.idContractActive = idContractActive;
     }
 
-
-    public int getManagerId() {
-        return managerId;
+    public Long getIdManager() {
+        return idManager;
     }
 
-    public void setManagerId(int managerId) {
-        this.managerId = managerId;
+    public void setIdManager(Long idManager) {
+        this.idManager = idManager;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public Long getIdDepartment() {
+        return idDepartment;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setIdDepartment(Long idDepartment) {
+        this.idDepartment = idDepartment;
+    }
+
+    public Long getIdGrade() {
+        return idGrade;
+    }
+
+    public void setIdGrade(Long idGrade) {
+        this.idGrade = idGrade;
+    }
+
+    public boolean isManager() {
+        return isManager;
+    }
+
+    public void setManager(boolean manager) {
+        isManager = manager;
+    }
+
+    public boolean isOfficer() {
+        return isOfficer;
+    }
+
+    public void setOfficer(boolean officer) {
+        isOfficer = officer;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Long getIdProject1() {
+        return idProject1;
+    }
+
+    public void setIdProject1(Long idProject1) {
+        this.idProject1 = idProject1;
+    }
+
+    public Long getIdProject2() {
+        return idProject2;
+    }
+
+    public void setIdProject2(Long idProject2) {
+        this.idProject2 = idProject2;
+    }
+
+    public Long getIdProject3() {
+        return idProject3;
+    }
+
+    public void setIdProject3(Long idProject3) {
+        this.idProject3 = idProject3;
+    }
+
+    public Long getIdProject4() {
+        return idProject4;
+    }
+
+    public void setIdProject4(Long idProject4) {
+        this.idProject4 = idProject4;
+    }
+
+    public Long getIdProject5() {
+        return idProject5;
+    }
+
+    public void setIdProject5(Long idProject5) {
+        this.idProject5 = idProject5;
     }
 
     @Override
@@ -139,11 +236,20 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", hireDate=" + hireDate +
-                ", job_id='" + jobId + '\'' +
-                ", salary=" + salary +
-                ", managerId=" + managerId +
-                ", departmentId=" + departmentId +
+                ", idJob=" + idJob +
+                ", idLocation=" + idLocation +
+                ", idContractActive=" + idContractActive +
+                ", idManager=" + idManager +
+                ", idDepartment=" + idDepartment +
+                ", idGrade=" + idGrade +
+                ", isManager=" + isManager +
+                ", isOfficer=" + isOfficer +
+                ", isActive=" + isActive +
+                ", idProject1=" + idProject1 +
+                ", idProject2=" + idProject2 +
+                ", idProject3=" + idProject3 +
+                ", idProject4=" + idProject4 +
+                ", idProject5=" + idProject5 +
                 '}';
     }
 }
