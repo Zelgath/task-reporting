@@ -25,9 +25,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @Autowired
-    private DateFormatterForAngularMaterial dffam;
-
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
