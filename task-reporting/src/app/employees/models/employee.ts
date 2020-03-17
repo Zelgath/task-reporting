@@ -5,9 +5,18 @@ export interface Employee {
     lastName : string;
     email : string;
     phoneNumber : string;
-    hireDate : string;
-    jobId : string;
-    salary : number;
-    managerId : number;
-    departmentId : number;
+    idJob : number;
+    idLocation : number;
+    idContractActive : number;
+    idManager : number;
+    idDepartment : number;
+    idGrade : number;
+    isManager : boolean;
+    isOfficer : boolean;
+    isActive : boolean;
+    idProject1 : number;
+    idProject2 : number;
+    idProject3 : number;
+    idProject4 : number;
+    idProject5 : number;
 }

@@ -35,9 +35,9 @@ export class EmployeesListComponent implements OnInit {
         switch (sort.active) {
           case 'lastName': return this.compare(a.lastName, b.lastName, isAsc);
           case 'phoneNumber': return this.compare(a.phoneNumber, b.phoneNumber, isAsc);
-          case 'jobId': return this.compare(a.jobId, b.jobId, isAsc);
-          case 'departmentId': return this.compare(a.departmentId, b.departmentId, isAsc);
-          case 'salary': return this.compare(a.salary, b.salary, isAsc);
+          case 'jobId': return this.compare(a.idJob, b.idJob, isAsc);
+          case 'departmentId': return this.compare(a.idDepartment, b.idDepartment, isAsc);
+          case 'salary': return this.compare(a.idGrade, b.idGrade, isAsc);
           default: return 0;
         }
       });
@@ -61,7 +61,7 @@ export class EmployeesListComponent implements OnInit {
 
   countAverageSalary() : void {
     this.averageSalary = this.employees
-    .map((employee) => employee.salary)
+    .map((employee) => employee.id)
     .reduce((prev, next) => (prev + next))/this.employees.length;
     this.sortedEmployees = this.employees.slice();
   }

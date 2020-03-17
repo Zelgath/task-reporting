@@ -33,11 +33,10 @@ export class EmployeeDetailsComponent implements OnInit {
       lastName : [this.employee.lastName, Validators.required],
       email : [this.employee.email, Validators.required],
       phoneNumber : [this.employee.phoneNumber, [Validators.required, Validators.minLength(9)]],
-      hireDate : [this.employee.hireDate, Validators.required],
-      jobId : [this.employee.jobId, Validators.required],
-      salary : [this.employee.salary, Validators.required],
-      managerId : [this.employee.managerId, Validators.required],
-      departmentId : [this.employee.departmentId, Validators.required]
+      jobId : [this.employee.idJob, Validators.required],
+      salary : [this.employee.idGrade, Validators.required],
+      managerId : [this.employee.idManager, Validators.required],
+      departmentId : [this.employee.idDepartment, Validators.required]
     });
   }
 

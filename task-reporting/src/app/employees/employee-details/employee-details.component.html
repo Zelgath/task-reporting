@@ -33,29 +33,24 @@
                 <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number">
                 <p *ngIf="!employeeForm.get('phoneNumber').valid && employeeForm.get('phoneNumber').dirty" class="error">This field is required and must contain at least 9 characters</p>
             </div>
-            <div class="col-sm-4">
-                    <mat-label>Hire Date </mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="hireDate">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-            </div>
+            
             <div class="col-sm-4">
                 <label>Job Id</label>
-                <input formControlName="jobId" type="text" class="form-control" placeholder="Job Id">
+                <input formControlName="idJob" type="text" class="form-control" placeholder="Job Id">
             </div>          
         </div>
         <div class="row form-group">
             <div class="col-sm-4">
-                <label>Salary</label>
-                <input formControlName="salary" type="text" class="form-control" placeholder="Salary">
+                <label>idLocation</label>
+                <input formControlName="idLocation" type="text" class="form-control" placeholder="idLocation">
             </div>
             <div class="col-sm-4">
-                <label>Manager Id</label>
-                <input formControlName="managerId" type="text" class="form-control" placeholder="Manager Id"> 
+                <label>idManager Id</label>
+                <input formControlName="idManager" type="text" class="form-control" placeholder="idManager Id"> 
             </div>
             <div class="col-sm-4">
                 <label>Department Id</label>
-                <input formControlName="departmentId" type="text" class="form-control" placeholder="Department Id">
+                <input formControlName="idDepartment" type="text" class="form-control" placeholder="idDepartment Id">
             </div>          
         </div>
 
