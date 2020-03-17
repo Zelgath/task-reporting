@@ -1,7 +1,7 @@
 package com.tasks.taskreporting.services;
 
 import com.tasks.taskreporting.domain.Employee;
-import com.tasks.taskreporting.domain.repositories.EmployeeRepository;
+import com.tasks.taskreporting.repositories.EmployeeRepository;
 import com.tasks.taskreporting.utils.DateFormatterForAngularMaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;

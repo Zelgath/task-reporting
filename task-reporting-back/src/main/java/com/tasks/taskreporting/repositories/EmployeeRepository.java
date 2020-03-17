@@ -1,4 +1,4 @@
-package com.tasks.taskreporting.domain.repositories;
+package com.tasks.taskreporting.repositories;
 
 import com.tasks.taskreporting.domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
