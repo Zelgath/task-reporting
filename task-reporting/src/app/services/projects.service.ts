@@ -15,4 +15,20 @@ export class ProjectsService {
   getProjects() : Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl);
 }
+
+  getProject(id : number) : Observable<Project> {
+    return this.http.get<Project>(this.apiUrl + `/${id}`);
+  } 
+
+  addProject(data) : Observable<Project> {
+    return this.http.post<Project>(this.apiUrl, data);
+  }
+
+  updateProject(id: number, data) : Observable<Project> {
+    return this.http.put<Project>(this.apiUrl + `/${id}`, data);
+  }
+
+  deleteProject(id: number) : Observable<Project> {
+    return this.http.delete<Project>(this.apiUrl + `/${id}`);
+  }
 }

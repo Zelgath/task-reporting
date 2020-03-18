@@ -23,8 +23,7 @@ import { ProjectsService } from '../services/projects.service';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule,
-    ProjectsModule
+    BrowserAnimationsModule
   ],
   exports: [FunctionalitiesListComponent, RouterModule, ProjectsModule],
   providers: [ProjectsService]
