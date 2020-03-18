@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../employees.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeesListComponent } from '../employees-list/employees-list.component';
 

@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FunctionalitiesListComponent } from './functionalities-list/functionalities-list.component';
+import { ProjectsModule } from './projects/projects.module';
+import { ProjectsService } from '../services/projects.service';
 
 
 
@@ -21,8 +23,10 @@ import { FunctionalitiesListComponent } from './functionalities-list/functionali
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProjectsModule
   ],
-  exports: [FunctionalitiesListComponent, RouterModule]
+  exports: [FunctionalitiesListComponent, RouterModule, ProjectsModule],
+  providers: [ProjectsService]
 })
 export class AdminModule { }
