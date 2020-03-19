@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Project } from 'src/app/models/project';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Utilites } from 'src/app/shared-module/utilities';
+import { Sort } from '@angular/material';
 
 @Component({
   selector: 'tr-projects-list',
@@ -15,7 +17,8 @@ export class ProjectsListComponent implements OnInit {
   projectForm : FormGroup;
 
   constructor(private projectsService : ProjectsService,
-              private formBuilder : FormBuilder) { }
+              private formBuilder : FormBuilder,
+              private utilities : Utilites) { }
 
 
   ngOnInit() {
@@ -53,5 +56,25 @@ export class ProjectsListComponent implements OnInit {
       this.loadProjects();
     })
   }
+
+  sortProjects(sort: Sort) {
+    const data = this.projects.slice();
+    if (!sort.active || sort.direction === '') {
+      this.projects = data;
+      return;
+    }
+      this.projects = data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+          case 'description': return this.utilities.compare(a.description, b.description, isAsc);
+          case 'client': return this.utilities.compare(a.client, b.client, isAsc);
+          case 'monthlyCost': return this.utilities.compare(a.monthlyCost, b.monthlyCost, isAsc);
+          case 'startDate': return this.utilities.compare(a.startDate, b.startDate, isAsc);
+          case 'endDate': return this.utilities.compare(a.endDate, b.endDate, isAsc);
+          case 'totalCost': return this.utilities.compare(a.totalCost, b.totalCost, isAsc);
+          default: return 0;
+        }
+      });
+    }
 
 }

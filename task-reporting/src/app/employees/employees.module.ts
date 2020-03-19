@@ -36,8 +36,6 @@ import { AdminModule } from '../admin/admin.module';
     BrowserAnimationsModule,
     AdminModule
   ],
-  providers: [EmployeesService, EmployeeResolve, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-  { provide: DateAdapter, useClass: MomentUtcDateAdapter }]
+  providers: [EmployeesService, EmployeeResolve]
 })
 export class EmployeesModule { }

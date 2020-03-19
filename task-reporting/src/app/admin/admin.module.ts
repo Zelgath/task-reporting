@@ -19,11 +19,7 @@ import { ProjectsService } from '../services/projects.service';
     SharedModule,
     RouterModule,
     MatSortModule,
-    FormsModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    BrowserAnimationsModule
+    FormsModule
   ],
   exports: [FunctionalitiesListComponent, RouterModule, ProjectsModule],
   providers: [ProjectsService]

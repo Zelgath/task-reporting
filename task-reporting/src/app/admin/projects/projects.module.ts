@@ -9,6 +9,7 @@ import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter, MatSortModule, MatDatep
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MomentUtcDateAdapter } from 'src/app/shared-module/moment-utc-date-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Utilites } from 'src/app/shared-module/utilities';
 
 
 
@@ -25,10 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatSortModule
   ],
   exports: [RouterModule],
-  providers: [ProjectsService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-  { provide: DateAdapter, useClass: MomentUtcDateAdapter }]
+  providers: [ProjectsService, Utilites]
 })
 export class ProjectsModule { }

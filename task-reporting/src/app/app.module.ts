@@ -32,8 +32,7 @@ import { AdminRoutingModule } from './admin/admin-routing/admin-routing.module';
     AppRoutingModule,
     EmployeesRoutingModule,
     NoopAnimationsModule,
-    MatSortModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ],
   providers: [EmployeesService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
