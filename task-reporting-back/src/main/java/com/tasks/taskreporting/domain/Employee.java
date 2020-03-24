@@ -1,6 +1,7 @@
 package com.tasks.taskreporting.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 @Entity(name = "Employee")
 @Table(name = "employees")
 @EntityListeners(AuditingEntityListener.class)
+
 public class Employee {
 
     @Id
@@ -27,8 +29,10 @@ public class Employee {
     private String email;
     @Column(name = "employee_phone_number")
     private String phoneNumber;
-    @Column(name = "id_job")
-    private Long idJob;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_job", referencedColumnName = "id_job")
+    private Job job;
     @Column(name = "id_location")
     private Long idLocation;
     @Column(name = "id_contract_active")
@@ -61,13 +65,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Long idJob, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.idJob = idJob;
+        this.job = job;
         this.idLocation = idLocation;
         this.idContractActive = idContractActive;
         this.idManager = idManager;
@@ -119,12 +123,12 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getIdJob() {
-        return idJob;
+    public Job getJob() {
+        return job;
     }
 
-    public void setIdJob(Long idJob) {
-        this.idJob = idJob;
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public Long getIdLocation() {
@@ -222,7 +226,7 @@ public class Employee {
                 lastName.equals(employee.lastName) &&
                 email.equals(employee.email) &&
                 phoneNumber.equals(employee.phoneNumber) &&
-                idJob.equals(employee.idJob) &&
+                job.equals(employee.job) &&
                 idLocation.equals(employee.idLocation) &&
                 Objects.equals(idContractActive, employee.idContractActive) &&
                 Objects.equals(idManager, employee.idManager) &&
@@ -233,7 +237,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, idJob, idLocation, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, idLocation, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
     }
 
     @Override
@@ -244,7 +248,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", idJob=" + idJob +
+                ", idJob=" + job +
                 ", idLocation=" + idLocation +
                 ", idContractActive=" + idContractActive +
                 ", idManager=" + idManager +
