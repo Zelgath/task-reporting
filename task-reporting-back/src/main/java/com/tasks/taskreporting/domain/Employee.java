@@ -33,8 +33,11 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_job", referencedColumnName = "id_job")
     private Job job;
-    @Column(name = "id_location")
-    private Long idLocation;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_location", referencedColumnName = "id_location")
+    private Location location;
+
     @Column(name = "id_contract_active")
     private Long idContractActive;
     @Column(name = "id_manager")
@@ -65,14 +68,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.job = job;
-        this.idLocation = idLocation;
+        this.location = location;
         this.idContractActive = idContractActive;
         this.idManager = idManager;
         this.idDepartment = idDepartment;
@@ -131,12 +134,12 @@ public class Employee {
         this.job = job;
     }
 
-    public Long getIdLocation() {
-        return idLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setIdLocation(Long idLocation) {
-        this.idLocation = idLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Long getIdContractActive() {
@@ -227,7 +230,7 @@ public class Employee {
                 email.equals(employee.email) &&
                 phoneNumber.equals(employee.phoneNumber) &&
                 job.equals(employee.job) &&
-                idLocation.equals(employee.idLocation) &&
+                location.equals(employee.location) &&
                 Objects.equals(idContractActive, employee.idContractActive) &&
                 Objects.equals(idManager, employee.idManager) &&
                 idDepartment.equals(employee.idDepartment) &&
@@ -237,7 +240,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, idLocation, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
     }
 
     @Override
@@ -249,7 +252,7 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idJob=" + job +
-                ", idLocation=" + idLocation +
+                ", idLocation=" + location +
                 ", idContractActive=" + idContractActive +
                 ", idManager=" + idManager +
                 ", idDepartment=" + idDepartment +

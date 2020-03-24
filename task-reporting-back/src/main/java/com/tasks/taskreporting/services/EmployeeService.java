@@ -46,7 +46,7 @@ public class EmployeeService {
         employee.setEmail(employeeDetails.getEmail());
         employee.setPhoneNumber(employeeDetails.getPhoneNumber());
         employee.setJob(employeeDetails.getJob());
-        employee.setIdLocation(employeeDetails.getIdLocation());
+        employee.setLocation(employeeDetails.getLocation());
         employee.setIdContractActive(employeeDetails.getIdContractActive());
         employee.setIdManager(employeeDetails.getIdManager());
         employee.setIdDepartment(employeeDetails.getIdDepartment());
