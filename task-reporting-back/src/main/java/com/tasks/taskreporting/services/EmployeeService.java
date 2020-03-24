@@ -1,7 +1,9 @@
 package com.tasks.taskreporting.services;
 
 import com.tasks.taskreporting.domain.Employee;
+import com.tasks.taskreporting.domain.Project;
 import com.tasks.taskreporting.repositories.EmployeeRepository;
+import com.tasks.taskreporting.repositories.ProjectRepository;
 import com.tasks.taskreporting.utils.DateFormatterForAngularMaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -18,7 +20,11 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
+    private ProjectRepository projectRepository;
+
+    @Autowired
     private DateFormatterForAngularMaterial dffam;
+
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -48,11 +54,7 @@ public class EmployeeService {
         employee.setManager(employeeDetails.isManager());
         employee.setOfficer(employeeDetails.isOfficer());
         employee.setActive(employeeDetails.isActive());
-        employee.setIdProject1(employeeDetails.getIdProject1());
-        employee.setIdProject2(employeeDetails.getIdProject2());
-        employee.setIdProject3(employeeDetails.getIdProject3());
-        employee.setIdProject4(employeeDetails.getIdProject4());
-        employee.setIdProject5(employeeDetails.getIdProject5());
+        employee.setProjects(employee.getProjects());
         final Employee updatedEmployee = employeeRepository.save(employee);
         return updatedEmployee;
     }
@@ -65,4 +67,7 @@ public class EmployeeService {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+
+
+
 }

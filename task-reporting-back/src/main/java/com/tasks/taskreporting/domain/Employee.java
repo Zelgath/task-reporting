@@ -1,13 +1,16 @@
 package com.tasks.taskreporting.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-@Entity
+@Entity(name = "Employee")
 @Table(name = "employees")
 @EntityListeners(AuditingEntityListener.class)
 public class Employee {
@@ -42,21 +45,23 @@ public class Employee {
     private boolean isOfficer;
     @Column(name = "is_active")
     private boolean isActive;
-    @Column(name = "id_project_1")
-    private Long idProject1;
-    @Column(name = "id_project_2")
-    private Long idProject2;
-    @Column(name = "id_project_3")
-    private Long idProject3;
-    @Column(name = "id_project_4")
-    private Long idProject4;
-    @Column(name = "id_project_5")
-    private Long idProject5;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "projects_assigment",
+                joinColumns = @JoinColumn(name = "id_employee"),
+                inverseJoinColumns = @JoinColumn(name = "id_project")
+    )
+    @JsonManagedReference
+    private List<Project> projects = new ArrayList<>();
+
 
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Long idJob, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, Long idProject1, Long idProject2, Long idProject3, Long idProject4, Long idProject5) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Long idJob, Long idLocation, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -71,11 +76,7 @@ public class Employee {
         this.isManager = isManager;
         this.isOfficer = isOfficer;
         this.isActive = isActive;
-        this.idProject1 = idProject1;
-        this.idProject2 = idProject2;
-        this.idProject3 = idProject3;
-        this.idProject4 = idProject4;
-        this.idProject5 = idProject5;
+        this.projects = projects;
     }
 
     public Long getId() {
@@ -190,44 +191,49 @@ public class Employee {
         isActive = active;
     }
 
-    public Long getIdProject1() {
-        return idProject1;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setIdProject1(Long idProject1) {
-        this.idProject1 = idProject1;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
-    public Long getIdProject2() {
-        return idProject2;
+    public void addProject(Project project) {
+        projects.add(project);
+        project.getEmployees().add(this);
     }
 
-    public void setIdProject2(Long idProject2) {
-        this.idProject2 = idProject2;
+    public void removeProject(Project project) {
+        projects.remove(project);
+        project.getEmployees().remove(this);
     }
 
-    public Long getIdProject3() {
-        return idProject3;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return isManager == employee.isManager &&
+                isOfficer == employee.isOfficer &&
+                isActive == employee.isActive &&
+                id.equals(employee.id) &&
+                firstName.equals(employee.firstName) &&
+                lastName.equals(employee.lastName) &&
+                email.equals(employee.email) &&
+                phoneNumber.equals(employee.phoneNumber) &&
+                idJob.equals(employee.idJob) &&
+                idLocation.equals(employee.idLocation) &&
+                Objects.equals(idContractActive, employee.idContractActive) &&
+                Objects.equals(idManager, employee.idManager) &&
+                idDepartment.equals(employee.idDepartment) &&
+                idGrade.equals(employee.idGrade) &&
+                Objects.equals(projects, employee.projects);
     }
 
-    public void setIdProject3(Long idProject3) {
-        this.idProject3 = idProject3;
-    }
-
-    public Long getIdProject4() {
-        return idProject4;
-    }
-
-    public void setIdProject4(Long idProject4) {
-        this.idProject4 = idProject4;
-    }
-
-    public Long getIdProject5() {
-        return idProject5;
-    }
-
-    public void setIdProject5(Long idProject5) {
-        this.idProject5 = idProject5;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, idJob, idLocation, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
     }
 
     @Override
@@ -247,11 +253,7 @@ public class Employee {
                 ", isManager=" + isManager +
                 ", isOfficer=" + isOfficer +
                 ", isActive=" + isActive +
-                ", idProject1=" + idProject1 +
-                ", idProject2=" + idProject2 +
-                ", idProject3=" + idProject3 +
-                ", idProject4=" + idProject4 +
-                ", idProject5=" + idProject5 +
+                ", projects=" + projects +
                 '}';
     }
 }

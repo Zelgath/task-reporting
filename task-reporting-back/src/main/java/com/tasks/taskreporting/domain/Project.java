@@ -1,10 +1,17 @@
 package com.tasks.taskreporting.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.NaturalId;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-@Entity
+@Entity(name = "Project")
 @Table(name = "projects")
 @EntityListeners(AuditingEntityListener.class)
 public class Project {
@@ -13,6 +20,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_project")
     private Long id;
+    @NaturalId
     @Column(name = "project_description")
     private String description;
     @Column(name = "project_client")
@@ -25,6 +33,10 @@ public class Project {
     private String endDate;
     @Column(name = "project_total_cost")
     private Long totalCost;
+
+    @ManyToMany(mappedBy = "projects")
+    @JsonBackReference
+    private List<Employee> employees = new ArrayList<>();
 
     public Project() {
     }
@@ -95,6 +107,35 @@ public class Project {
         this.totalCost = totalCost;
     }
 
+//    @JsonIgnore
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return id.equals(project.id) &&
+                description.equals(project.description) &&
+                client.equals(project.client) &&
+                monthlyCost.equals(project.monthlyCost) &&
+                startDate.equals(project.startDate) &&
+                Objects.equals(endDate, project.endDate) &&
+                Objects.equals(totalCost, project.totalCost) &&
+                Objects.equals(employees, project.employees);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, description, client, monthlyCost, startDate, endDate, totalCost, employees);
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -105,6 +146,7 @@ public class Project {
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", totalCost=" + totalCost +
+                ", employees=" + employees +
                 '}';
     }
 }
