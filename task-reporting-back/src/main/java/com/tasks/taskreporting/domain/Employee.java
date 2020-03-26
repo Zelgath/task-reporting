@@ -30,26 +30,31 @@ public class Employee {
     @Column(name = "employee_phone_number")
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_job", referencedColumnName = "id_job")
+    @OneToOne
+    @JoinColumn(name = "id_job")
     private Job job;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_location", referencedColumnName = "id_location")
+    @OneToOne
+    @JoinColumn(name = "id_location")
     private Location location;
 
-    @Column(name = "id_contract_active")
-    private Long idContractActive;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contract_active")
+    private Contract contractActive;
+
     @Column(name = "id_manager")
     private Long idManager;
     @Column(name = "id_department")
     private Long idDepartment;
     @Column(name = "id_grade")
     private Long idGrade;
+
     @Column(name = "is_manager")
     private boolean isManager;
+
     @Column(name = "is_officer")
     private boolean isOfficer;
+
     @Column(name = "is_active")
     private boolean isActive;
 
@@ -68,7 +73,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Long idContractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Contract contractActive, Long idManager, Long idDepartment, Long idGrade, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,7 +81,7 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.job = job;
         this.location = location;
-        this.idContractActive = idContractActive;
+        this.contractActive = contractActive;
         this.idManager = idManager;
         this.idDepartment = idDepartment;
         this.idGrade = idGrade;
@@ -142,12 +147,12 @@ public class Employee {
         this.location = location;
     }
 
-    public Long getIdContractActive() {
-        return idContractActive;
+    public Contract getContractActive() {
+        return contractActive;
     }
 
-    public void setIdContractActive(Long idContractActive) {
-        this.idContractActive = idContractActive;
+    public void setContractActive(Contract contractActive) {
+        this.contractActive = contractActive;
     }
 
     public Long getIdManager() {
@@ -231,7 +236,7 @@ public class Employee {
                 phoneNumber.equals(employee.phoneNumber) &&
                 job.equals(employee.job) &&
                 location.equals(employee.location) &&
-                Objects.equals(idContractActive, employee.idContractActive) &&
+                Objects.equals(contractActive, employee.contractActive) &&
                 Objects.equals(idManager, employee.idManager) &&
                 idDepartment.equals(employee.idDepartment) &&
                 idGrade.equals(employee.idGrade) &&
@@ -240,7 +245,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, idContractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, contractActive, idManager, idDepartment, idGrade, isManager, isOfficer, isActive, projects);
     }
 
     @Override
@@ -253,7 +258,7 @@ public class Employee {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idJob=" + job +
                 ", idLocation=" + location +
-                ", idContractActive=" + idContractActive +
+                ", idContractActive=" + contractActive +
                 ", idManager=" + idManager +
                 ", idDepartment=" + idDepartment +
                 ", idGrade=" + idGrade +

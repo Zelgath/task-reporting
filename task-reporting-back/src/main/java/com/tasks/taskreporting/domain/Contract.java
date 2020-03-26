@@ -1,12 +1,15 @@
 package com.tasks.taskreporting.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Contract")
 @Table(name = "contracts")
 @EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Contract {
 
     @Id
@@ -21,22 +24,25 @@ public class Contract {
     private String endDate;
     @Column(name = "id_grade")
     private Long idGrade;
+
     @Column(name = "contract_salary_factor")
     private Double salaryFactor;
-    @Column(name = "id_employee")
-    private Long idEmployee;
+
+    @OneToOne(mappedBy = "contractActive", cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY, optional = false)
+    private Employee employee;
 
     public Contract() {
     }
 
-    public Contract(Long id, String type, String startDate, String endDate, Long idGrade, Double salaryFactor, Long idEmployee) {
+    public Contract(Long id, String type, String startDate, String endDate, Long idGrade, Double salaryFactor, Employee employee) {
         this.id = id;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
         this.idGrade = idGrade;
         this.salaryFactor = salaryFactor;
-        this.idEmployee = idEmployee;
+        this.employee = employee;
     }
 
     public Long getId() {
@@ -87,12 +93,13 @@ public class Contract {
         this.salaryFactor = salaryFactor;
     }
 
-    public Long getIdEmployee() {
-        return idEmployee;
+    @JsonIgnore
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override
@@ -104,7 +111,7 @@ public class Contract {
                 ", endDate='" + endDate + '\'' +
                 ", idGrade=" + idGrade +
                 ", salaryFactor=" + salaryFactor +
-                ", idEmployee=" + idEmployee +
+                ", idEmployee=" + employee +
                 '}';
     }
 }

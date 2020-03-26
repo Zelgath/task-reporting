@@ -11,7 +11,6 @@ import java.util.List;
 @Entity(name = "Location")
 @Table(name = "locations")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,24 +28,17 @@ public class Location {
     @Column(name = "location_country")
     private String country;
 
-    @OneToMany(
-            mappedBy = "location",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Employee> employees = new ArrayList<>();
 
     public Location() {
     }
 
-    public Location(Long id, String description, String city, String street, String postal, String country, List<Employee> employees) {
+    public Location(Long id, String description, String city, String street, String postal, String country) {
         this.id = id;
         this.description = description;
         this.city = city;
         this.street = street;
         this.postal = postal;
         this.country = country;
-        this.employees = employees;
     }
 
     public Long getId() {
@@ -97,22 +89,16 @@ public class Location {
         this.country = country;
     }
 
-    @JsonIgnore
-    public List<Employee> getEmployees() {
-        return employees;
-    }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
-        employee.setLocation(this);
-    }
-
-    public void removeEmployee(Employee employee) {
-        employees.remove(employee);
-        employee.setLocation(null);
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", postal='" + postal + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }

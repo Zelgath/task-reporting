@@ -42,7 +42,7 @@ public class ContractService {
         contract.setEndDate(dffam.changeData(contractDetails.getEndDate()));
         contract.setIdGrade(contractDetails.getIdGrade());
         contract.setSalaryFactor(contractDetails.getSalaryFactor());
-        contract.setIdEmployee(contractDetails.getIdEmployee());
+        contract.setEmployee(contractDetails.getEmployee());
         final Contract updatedContract = contractRepository.save(contract);
         return updatedContract;
     }
