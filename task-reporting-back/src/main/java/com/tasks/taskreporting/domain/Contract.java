@@ -22,8 +22,10 @@ public class Contract {
     private String startDate;
     @Column(name = "contract_end_date")
     private String endDate;
-    @Column(name = "id_grade")
-    private Long idGrade;
+
+    @OneToOne
+    @JoinColumn(name = "id_grade")
+    private Grade grade;
 
     @Column(name = "contract_salary_factor")
     private Double salaryFactor;
@@ -35,12 +37,12 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(Long id, String type, String startDate, String endDate, Long idGrade, Double salaryFactor, Employee employee) {
+    public Contract(Long id, String type, String startDate, String endDate, Grade grade, Double salaryFactor, Employee employee) {
         this.id = id;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.idGrade = idGrade;
+        this.grade = grade;
         this.salaryFactor = salaryFactor;
         this.employee = employee;
     }
@@ -77,12 +79,12 @@ public class Contract {
         this.endDate = endDate;
     }
 
-    public Long getIdGrade() {
-        return idGrade;
+    public Grade getGrade() {
+        return grade;
     }
 
-    public void setIdGrade(Long idGrade) {
-        this.idGrade = idGrade;
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 
     public Double getSalaryFactor() {
@@ -109,7 +111,7 @@ public class Contract {
                 ", type='" + type + '\'' +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
-                ", idGrade=" + idGrade +
+                ", idGrade=" + grade +
                 ", salaryFactor=" + salaryFactor +
                 ", idEmployee=" + employee +
                 '}';

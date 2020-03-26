@@ -50,7 +50,6 @@ public class EmployeeService {
         employee.setContractActive(employeeDetails.getContractActive());
         employee.setIdManager(employeeDetails.getIdManager());
         employee.setIdDepartment(employeeDetails.getIdDepartment());
-        employee.setIdGrade(employeeDetails.getIdGrade());
         employee.setManager(employeeDetails.isManager());
         employee.setOfficer(employeeDetails.isOfficer());
         employee.setActive(employeeDetails.isActive());
