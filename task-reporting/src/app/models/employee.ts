@@ -1,3 +1,8 @@
+import { Job } from './job';
+import { Contract } from './contract';
+import { Department } from './department';
+import { Project } from './project';
+
 export interface Employee {
 
     id : number;
@@ -5,18 +10,13 @@ export interface Employee {
     lastName : string;
     email : string;
     phoneNumber : string;
-    idJob : number;
-    idLocation : number;
-    idContractActive : number;
+    job : Job;
+    location : Location;
+    contractActive : Contract;
     idManager : number;
-    idDepartment : number;
-    idGrade : number;
+    department : Department;
     isManager : boolean;
     isOfficer : boolean;
     isActive : boolean;
-    idProject1 : number;
-    idProject2 : number;
-    idProject3 : number;
-    idProject4 : number;
-    idProject5 : number;
+    projects : Project[];
 }
