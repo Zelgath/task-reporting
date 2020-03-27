@@ -49,7 +49,7 @@ public class EmployeeService {
         employee.setLocation(employeeDetails.getLocation());
         employee.setContractActive(employeeDetails.getContractActive());
         employee.setIdManager(employeeDetails.getIdManager());
-        employee.setIdDepartment(employeeDetails.getIdDepartment());
+        employee.setDepartment(employeeDetails.getDepartment());
         employee.setManager(employeeDetails.isManager());
         employee.setOfficer(employeeDetails.isOfficer());
         employee.setActive(employeeDetails.isActive());

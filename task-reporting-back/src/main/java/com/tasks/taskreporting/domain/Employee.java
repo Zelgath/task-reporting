@@ -44,8 +44,11 @@ public class Employee {
 
     @Column(name = "id_manager")
     private Long idManager;
-    @Column(name = "id_department")
-    private Long idDepartment;
+
+
+    @OneToOne
+    @JoinColumn(name = "id_department")
+    private Department department;
 
 
     @Column(name = "is_manager")
@@ -72,7 +75,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Contract contractActive, Long idManager, Long idDepartment, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Contract contractActive, Long idManager, Department department, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -82,7 +85,7 @@ public class Employee {
         this.location = location;
         this.contractActive = contractActive;
         this.idManager = idManager;
-        this.idDepartment = idDepartment;
+        this.department = department;
         this.isManager = isManager;
         this.isOfficer = isOfficer;
         this.isActive = isActive;
@@ -161,14 +164,13 @@ public class Employee {
         this.idManager = idManager;
     }
 
-    public Long getIdDepartment() {
-        return idDepartment;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setIdDepartment(Long idDepartment) {
-        this.idDepartment = idDepartment;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
-
 
     public boolean isManager() {
         return isManager;
@@ -229,13 +231,13 @@ public class Employee {
                 location.equals(employee.location) &&
                 Objects.equals(contractActive, employee.contractActive) &&
                 Objects.equals(idManager, employee.idManager) &&
-                idDepartment.equals(employee.idDepartment) &&
+                department.equals(employee.department) &&
                 Objects.equals(projects, employee.projects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, contractActive, idManager, idDepartment, isManager, isOfficer, isActive, projects);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, contractActive, idManager, department, isManager, isOfficer, isActive, projects);
     }
 
     @Override
@@ -250,7 +252,7 @@ public class Employee {
                 ", idLocation=" + location +
                 ", idContractActive=" + contractActive +
                 ", idManager=" + idManager +
-                ", idDepartment=" + idDepartment +
+                ", idDepartment=" + department +
                 ", isManager=" + isManager +
                 ", isOfficer=" + isOfficer +
                 ", isActive=" + isActive +
