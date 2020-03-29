@@ -2,6 +2,7 @@ import { Job } from './job';
 import { Contract } from './contract';
 import { Department } from './department';
 import { Project } from './project';
+import { Location } from './location';
 
 export interface Employee {
 

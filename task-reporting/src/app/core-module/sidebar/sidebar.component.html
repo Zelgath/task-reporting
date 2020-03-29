@@ -1,12 +1,10 @@
 <div class="sidebar">
     <nav>
         <ul class="main-list">
-            <li [routerLink]="['/employees']" [routerLinkActive]="'active'" (click)="closeAdminPanel()">Employees</li>
-            <li [routerLink]="['/statistics']" [routerLinkActive]="'active'" (click)="closeAdminPanel()">Statistics</li>
+            <li [routerLink]="['/employees']" [routerLinkActive]="'active'" >Employees</li>
+            <li [routerLink]="['/statistics']" [routerLinkActive]="'active'" >Statistics</li>
             <li>Submit Work Time</li>
-            <li [routerLink]="['/admin']" [routerLinkActive]="'active'" (click)="changeIsAdminPanelOpened()">Admin panel
-            </li>
-
+            <li [routerLink]="['/admin']" [routerLinkActive]="'active'" (click)="changeIsAdminPanelOpened()">Admin panel</li>
             <div class="row">
                 <div class="col-sm-12">
                     <tr-nested-sidebar *ngIf="isAdminPanelOpened">
@@ -14,7 +12,15 @@
 
                 </div>
             </div>
+            <li [routerLink]="['/assigments']" [routerLinkActive]="'active'" (click)="changeIsAssigmentsPanelOpened()">Assigments panel</li>
 
+            <div class="row">
+                <div class="col-sm-12">
+                    <tr-nested-sidebar-assigments *ngIf="isAssigmentsPanelOpened">
+                    </tr-nested-sidebar-assigments>
+
+                </div>
+            </div>
         </ul>
     </nav>
 </div>

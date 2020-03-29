@@ -35,9 +35,9 @@ export class EmployeesListComponent implements OnInit {
         switch (sort.active) {
           case 'lastName': return this.compare(a.lastName, b.lastName, isAsc);
           case 'phoneNumber': return this.compare(a.phoneNumber, b.phoneNumber, isAsc);
-          case 'jobId': return this.compare(a.idJob, b.idJob, isAsc);
-          case 'departmentId': return this.compare(a.idDepartment, b.idDepartment, isAsc);
-          case 'salary': return this.compare(a.idGrade, b.idGrade, isAsc);
+          case 'jobId': return this.compare(a.job.description, b.job.description, isAsc);
+          case 'departmentId': return this.compare(a.department.description, b.department.description, isAsc);
+          case 'salary': return this.compare(a.location.descritpion, b.location.descritpion, isAsc);
           default: return 0;
         }
       });

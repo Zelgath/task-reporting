@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLinkActive } from '@angular/router';
+import { url } from 'inspector';
 
 @Component({
   selector: 'tr-sidebar',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   isAdminPanelOpened : boolean = false;
+  isAssigmentsPanelOpened: boolean = false;
 
   constructor() { }
 
@@ -22,7 +25,13 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  closeAdminPanel () : void {
-    this.isAdminPanelOpened = false;
+
+  changeIsAssigmentsPanelOpened () : void {
+    if (this.isAssigmentsPanelOpened) {
+      this.isAssigmentsPanelOpened = false;
+    } else {
+      this.isAssigmentsPanelOpened = true;
+    }
   }
+
 }
