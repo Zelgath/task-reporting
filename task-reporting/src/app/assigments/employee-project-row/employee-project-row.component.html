@@ -1,1 +1,28 @@
-<p>employee-project-row works!</p>
+<h1>{{employee.firstName}} {{employee.lastName}}</h1>
+<h2>{{employee.job.description}}</h2>
+<h3>Department: {{employee.department.description}}</h3>
+
+<table class="table tr-table">
+    <thead>
+        <tr>
+            <th>Project Description</th>
+            <th>Client</th>
+            <th>Project monthly cost</th>
+            <th>Project Start Date</th>
+            <th>Project End date</th>
+            <th>Total Cost</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of employee.projects; let i = index">
+            <td>{{ project.description }}</td>
+            <td>{{ project.client }}</td>
+            <td>{{ project.monthlyCost }}</td>
+            <td>{{ project.startDate }}</td>
+            <td>{{ project.endDate }}</td>
+            <td>{{ project.totalCost }}</td>
+            <td class="deleting-cell">X</td>
+        </tr>
+    </tbody>
+</table>

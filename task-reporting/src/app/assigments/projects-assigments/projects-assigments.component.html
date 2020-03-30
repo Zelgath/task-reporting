@@ -1,1 +1,40 @@
-<p>projects-assigments works!</p>
+<tr-header>
+    <p levels>Assigned Projects</p>
+
+    <div content>
+        <p>LOREM IPSUM</p>
+    </div> 
+</tr-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <table class="table tr-table">
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Assigned Projects</th>
+                    </tr>
+                </thead>
+                <tbody>   
+                <tr *ngFor="let employee of employees; let i = index" (click) = "chooseEmployee(employee.id)">
+                    <td> {{employee.firstName}} {{employee.lastName}}</td>
+                    <td>
+                        <ul>
+                            <li *ngFor= "let project of employee.projects; let j=index"> {{ project.description }} </li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-7">
+                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instruction" [employee] = "chosenEmployee">
+
+                </tr-employee-project-row>
+            <ng-template #instruction>
+                <p> Click on employee to open assigment panel</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

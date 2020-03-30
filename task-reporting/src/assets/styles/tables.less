@@ -1,7 +1,6 @@
 @import 'variables.less';
 
 .tr-table{
-    margin: 20px;
     padding: 10px;
     background: @light-grey;
     border: 2px solid @black;
@@ -9,6 +8,12 @@
     thead {
         border: 2px solid @black;
         background: @light-grey;
+       tr {
+           th {
+            text-align: center;
+            vertical-align: middle;
+           }
+       }
         
     }
 
@@ -26,7 +31,7 @@
     }
 
     th {
-        text-align: center;
+        
         font-weight: 700;
         text-transform: uppercase;
         color: @black;
@@ -42,6 +47,7 @@
         color: @black;
         border: 2px solid @black;
         text-align: center;
+        vertical-align: middle;
     }
 
     .deleting-cell:hover {
