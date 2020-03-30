@@ -10,7 +10,7 @@ import { NestedSidebarAssigmentsComponent } from './sidebar/nested-sidebar-assig
 
 @NgModule({
   declarations: [SidebarComponent, NestedSidebarComponent, NestedSidebarAssigmentsComponent],
-  exports: [SidebarComponent, NestedSidebarComponent],
+  exports: [SidebarComponent, NestedSidebarComponent, NestedSidebarAssigmentsComponent],
   imports: [
     CommonModule,
     RouterModule

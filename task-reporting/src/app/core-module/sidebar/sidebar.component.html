@@ -4,7 +4,12 @@
             <li [routerLink]="['/employees']" [routerLinkActive]="'active'" >Employees</li>
             <li [routerLink]="['/statistics']" [routerLinkActive]="'active'" >Statistics</li>
             <li>Submit Work Time</li>
-            <li [routerLink]="['/admin']" [routerLinkActive]="'active'" (click)="changeIsAdminPanelOpened()">Admin panel</li>
+            <li [routerLink]="['/admin']" [routerLinkActive]="'active'">Admin panel
+                <button *ngIf="!isAdminPanelOpened;else hideAdminPanelButton" type="button" class="plus-button float-right" (click)="changeIsAdminPanelOpened()">+</button>
+                <ng-template #hideAdminPanelButton>
+                <button type="button" class="plus-button float-right" (click)="changeIsAdminPanelOpened()">-</button>
+                </ng-template>
+            </li>
             <div class="row">
                 <div class="col-sm-12">
                     <tr-nested-sidebar *ngIf="isAdminPanelOpened">
@@ -12,7 +17,12 @@
 
                 </div>
             </div>
-            <li [routerLink]="['/assigments']" [routerLinkActive]="'active'" (click)="changeIsAssigmentsPanelOpened()">Assigments panel</li>
+            <li [routerLink]="['/assigments']" [routerLinkActive]="'active'" >Assigments panel
+                <button *ngIf="!isAssigmentsPanelOpened;else hideAssigmentsPanelButton" type="button" class="plus-button float-right" (click)="changeIsAssigmentsPanelOpened()">+</button>
+                <ng-template #hideAssigmentsPanelButton>
+                    <button type="button" class="plus-button float-right" (click)="changeIsAssigmentsPanelOpened()">-</button>
+                </ng-template>
+            </li>
 
             <div class="row">
                 <div class="col-sm-12">

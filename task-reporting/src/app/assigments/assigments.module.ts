@@ -6,6 +6,8 @@ import { EmployeeProjectRowComponent } from './employee-project-row/employee-pro
 import { EmployeeProjectRowSubrowComponent } from './employee-project-row-subrow/employee-project-row-subrow.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared-module/shared.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material';
 
 
 
@@ -13,12 +15,17 @@ import { SharedModule } from '../shared-module/shared.module';
   declarations: [AssigmentsListComponent, ProjectsAssigmentsComponent, EmployeeProjectRowComponent, EmployeeProjectRowSubrowComponent],
   imports: [
     CommonModule,
-    RouterModule,
+    ReactiveFormsModule,
     SharedModule,
+    RouterModule,
+    MatSortModule,
+    FormsModule
     
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    AssigmentsListComponent,
+    ProjectsAssigmentsComponent
   ]
 })
 export class AssigmentsModule { }

@@ -16,6 +16,7 @@ import { AdminRoutingModule } from './admin/admin-routing/admin-routing.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { AdminModule } from './admin/admin.module';
 import { AssigmentsModule } from './assigments/assigments.module';
+import { AssigmentsRoutingModule } from './assigments/assigments-routing.module';
 
 
  
@@ -37,7 +38,8 @@ import { AssigmentsModule } from './assigments/assigments.module';
     AdminRoutingModule,
     StatisticsModule,
     AdminModule,
-    AssigmentsModule
+    AssigmentsModule,
+    AssigmentsRoutingModule
   ],
   providers: [EmployeesService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
