@@ -15,12 +15,14 @@ export class ProjectsAssigmentsComponent implements OnInit {
   projects : Project [];
   isSubrowOpened : boolean = false;
   chosenEmployee : Employee;
+  unassignedProjects : Project[];
 
   constructor(private employeesService : EmployeesService,
               private projectsService : ProjectsService) { }
 
   ngOnInit() {
     this.loadEmployees();
+    this.loadProjects();
   }
 
   loadEmployees (): void  {
@@ -40,8 +42,10 @@ export class ProjectsAssigmentsComponent implements OnInit {
       this.chosenEmployee = employee;
       
     })
-    
+
   }
+
+  
 
 
 
