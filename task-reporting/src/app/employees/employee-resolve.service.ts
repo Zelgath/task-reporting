@@ -1,4 +1,4 @@
-import { EmployeesService } from './employees.service';
+import { EmployeesService } from '../services/employees.service';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Employee } from '../models/employee';
 import { Injectable } from '@angular/core';

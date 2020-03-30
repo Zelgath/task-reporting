@@ -5,8 +5,7 @@ import { EmployeeResolve } from './employee-resolve.service';
 
 const EMPLOYEES_ROUTES : Route [] = [
     {path: 'employees/:id',
-     component: <any>EmployeeDetailsComponent,
-    resolve: { employee: EmployeeResolve}
+     component: <any>EmployeeDetailsComponent
 }
 ]
 

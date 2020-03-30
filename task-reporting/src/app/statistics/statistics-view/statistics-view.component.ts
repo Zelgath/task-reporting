@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeesService } from 'src/app/employees/employees.service';
+import { EmployeesService } from 'src/app/services/employees.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Employee } from 'src/app/models/employee';
 import { Project } from 'src/app/models/project';
@@ -21,22 +21,20 @@ export class StatisticsViewComponent implements OnInit {
     
 
   ngOnInit() {
-    this.loadEmployees();
-    this.loadProjects();
+    // this.loadEmployees();
+    // this.loadProjects();
   }
 
-  loadProjects() {
-    this.projectsService.getProjects().subscribe((projects) =>{
-      this.projects = projects;
-    })
-  }
+  // loadProjects() {
+  //   this.projectsService.getProjects().subscribe((projects) =>{
+  //     this.projects = projects;
+  //   })
+  // }
 
-  loadEmployees() {
-    this.employeesService.getEmployees().subscribe((employees) => {
-      this.employees = employees;
-    })
-  }
-
+  // loadEmployees() {
+  //   this.employeesService.getEmployees().subscribe((employees) => {
+  //     this.employees = employees;
+  //   })
   
 
 

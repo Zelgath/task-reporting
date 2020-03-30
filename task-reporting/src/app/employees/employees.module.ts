@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { AverageSalaryComponent } from './average-salary/average-salary.component';
 
-import { EmployeesService } from './employees.service';
+import { EmployeesService } from '../services/employees.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared-module/shared.module';

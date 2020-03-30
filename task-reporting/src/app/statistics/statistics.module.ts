@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeesProjectsComponent } from './employees-projects/employees-projects.component';
 import { StatisticsViewComponent } from './statistics-view/statistics-view.component';
-import { EmployeesService } from '../employees/employees.service';
+import { EmployeesService } from '../services/employees.service';
 import { ProjectsService } from '../services/projects.service';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
