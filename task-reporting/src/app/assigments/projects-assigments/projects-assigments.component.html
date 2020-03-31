@@ -17,7 +17,8 @@
                     </tr>
                 </thead>
                 <tbody>   
-                <tr *ngFor="let employee of employees; let i = index" (click) = "chooseEmployee(employee.id)">
+                <tr *ngFor="let employee of employees; let i = index" (click) = "chooseEmployee(employee.id)" 
+                (click) = "activateRow(i)" [ngClass]="{'activatedRow': i===activatedRowIndex}">
                     <td> {{employee.firstName}} {{employee.lastName}}</td>
                     <td>
                         <ul>
@@ -29,7 +30,8 @@
             </table>
         </div>
         <div class="col-sm-7">
-                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instruction" [employee] = "chosenEmployee">
+                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instruction" [employee] = "chosenEmployee"
+                [projects]="unassignedProjectsForChosenEmployee" (assignedProject)="refreshComponentViewAfterEmployeeAssigned($event)">
 
                 </tr-employee-project-row>
             <ng-template #instruction>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeesService } from '../../services/employees.service';
 import { EmployeesListComponent } from '../employees-list/employees-list.component';
@@ -21,6 +21,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit() {
     this.employeeForm = this.buildEmployeeForm();
   }
+  
 
   buildEmployeeForm() {
     return this.formBuilder.group ({

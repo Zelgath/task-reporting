@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnChanges } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { Employee } from 'src/app/models/employee';
@@ -15,7 +15,8 @@ export class ProjectsAssigmentsComponent implements OnInit {
   projects : Project [];
   isSubrowOpened : boolean = false;
   chosenEmployee : Employee;
-  unassignedProjects : Project[];
+  activatedRowIndex : number;
+  unassignedProjectsForChosenEmployee : Project[];
 
   constructor(private employeesService : EmployeesService,
               private projectsService : ProjectsService) { }
@@ -23,6 +24,12 @@ export class ProjectsAssigmentsComponent implements OnInit {
   ngOnInit() {
     this.loadEmployees();
     this.loadProjects();
+  }
+
+  refreshComponentViewAfterEmployeeAssigned(i : number) {
+    this.loadEmployees();
+    this.loadProjects();
+    this.chooseEmployee(i);
   }
 
   loadEmployees (): void  {
@@ -39,14 +46,22 @@ export class ProjectsAssigmentsComponent implements OnInit {
 
   chooseEmployee(i : number) : void{
     this.employeesService.getEmployee(i).subscribe((employee)=>{
-      this.chosenEmployee = employee;
-      
+      this.chosenEmployee=employee;
+      this.setUnassignedProjectsForEmployee(employee);
     })
-
+    
   }
 
-  
+  activateRow(i : number) : void {
+    this.activatedRowIndex = i;
+  }
 
-
+  setUnassignedProjectsForEmployee(employee : Employee) : void {
+    let unassignedProjects : Project[];
+    unassignedProjects = this.projects.filter(project=>
+      !employee.projects.map((employee)=>employee.id).includes(project.id)
+    );
+    this.unassignedProjectsForChosenEmployee = unassignedProjects;
+  }
 
 }

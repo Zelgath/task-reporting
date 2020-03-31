@@ -6,7 +6,8 @@ import { EmployeeProjectRowComponent } from './employee-project-row/employee-pro
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared-module/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatSortModule } from '@angular/material';
+import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelect, MatSelectModule, MatOptionModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -18,7 +19,13 @@ import { MatSortModule } from '@angular/material';
     SharedModule,
     RouterModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatOptionModule
     
   ],
   exports: [

@@ -22,10 +22,28 @@
             <td>{{ project.startDate }}</td>
             <td>{{ project.endDate }}</td>
             <td>{{ project.totalCost }}</td>
-            <td class="deleting-cell">X</td>
+            <td class="deleting-cell" (click) = "unassignProjectFromEmployee(project.id)">X</td>
         </tr>
     </tbody>
 </table>
 <h2>Assign project to employee</h2>
+<form [formGroup]="projectAssigmentForm">
+<mat-form-field>
+    <mat-label>Select a project</mat-label>
+    <mat-select formControlName="projectId" required>
+        <mat-option *ngFor="let project of projects" [value]="project.id">
+            {{ project.description }}
+        </mat-option>
+    </mat-select>
+</mat-form-field> <span><button class="action-panel-btn" type="submit" (click) = "assignProjectToEmployee()"> Add Project</button></span>
+</form>
+<div class="selected-project-descriptions" *ngIf="selectedProject">
+<h2>selected project: {{ selectedProject?.description }} for Client: {{ selectedProject?.client }}</h2>
+<h3>Project start date: {{selectedProject?.startDate}}   Project end date: {{selectedProject?.endDate}}</h3>
+<h3>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h3>
+</div>
+
+<pre> {{ projectAssigmentForm?.value | json }}</pre>
+<pre> {{ projectAssigmentForm?.valid | json }}</pre>
 
 
