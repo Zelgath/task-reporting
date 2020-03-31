@@ -18,30 +18,21 @@ export class EmployeeProjectRowComponent implements OnInit, OnChanges, AfterCont
   @Output() unassignedProject: EventEmitter<number> = new EventEmitter<number>();
   projectAssigmentForm : FormGroup;
   selectedProject : Project;
-  projectsAssigments: ProjectsAssigment[];
  
   constructor(private formBuilder : FormBuilder,
               private projectsAssigmentService : ProjectsAssigmentService) { }
 
   ngOnInit() {
-    this.loadProjectsAssigments();
   }
 
   ngOnChanges(){
     this.projectAssigmentForm = this.buildProjectAssigmentForm();
-    
   }
 
   ngAfterContentChecked() { 
     if (this.projectAssigmentForm.valid){
       this.assignValuesToSelectedProject(this.projectAssigmentForm.get("projectId").value);
     }
-  }
-
-  loadProjectsAssigments() {
-    this.projectsAssigmentService.getProjectsAssigments().subscribe((projectsAssigments)=>{
-      this.projectsAssigments = projectsAssigments;
-    });
   }
 
   buildProjectAssigmentForm () {
@@ -62,15 +53,21 @@ export class EmployeeProjectRowComponent implements OnInit, OnChanges, AfterCont
     })
   }
 
+  // getProjectAssigmentIdByEmployeeIdAndProjectId (projectId : number) : number {
+    
 
-  unassignProjectFromEmployee(projectId :number) {
-    this.projectsAssigmentService.deleteProjectsAssigment(
-      this.projectsAssigments.find((projectAssigment)=>
-      projectAssigment.projectId===projectId projectAssigment.employeeId===this.employee.id).id
-    ).subscribe(()=>{
-      this.unassignedProject.emit(this.employee.id);
-    })
-  }
+  //   return this.projectsAssigments.find(pa=>
+  //     pa.projectId === projectId &&
+  //     pa.employeeId===this.employee.id).id
+  // }
+
+
+  // unassignProjectFromEmployee(projectId :number) {
+  //   this.projectsAssigmentService.deleteProjectsAssigment(
+  //   ).subscribe(()=>{
+  //     this.unassignedProject.emit(this.employee.id);
+  //   })
+  // }
 
   
 
