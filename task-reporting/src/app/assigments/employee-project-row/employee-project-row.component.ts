@@ -53,21 +53,17 @@ export class EmployeeProjectRowComponent implements OnInit, OnChanges, AfterCont
     })
   }
 
-  // getProjectAssigmentIdByEmployeeIdAndProjectId (projectId : number) : number {
-    
 
-  //   return this.projectsAssigments.find(pa=>
-  //     pa.projectId === projectId &&
-  //     pa.employeeId===this.employee.id).id
-  // }
-
-
-  // unassignProjectFromEmployee(projectId :number) {
-  //   this.projectsAssigmentService.deleteProjectsAssigment(
-  //   ).subscribe(()=>{
-  //     this.unassignedProject.emit(this.employee.id);
-  //   })
-  // }
+  unassignProjectFromEmployee(projectId : number) {
+    const projectAssigmentToUnassign : ProjectsAssigment = {
+      "id" : null,
+      "employeeId" : this.employee.id,
+      "projectId" : projectId
+    }
+    this.projectsAssigmentService.deleteProjectsAssigmentByFields(projectAssigmentToUnassign).subscribe(()=>{
+      this.unassignedProject.emit(this.employee.id);
+    })
+  }
 
   
 

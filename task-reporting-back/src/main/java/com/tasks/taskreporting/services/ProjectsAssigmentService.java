@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectsAssigmentService {
@@ -44,5 +45,16 @@ public class ProjectsAssigmentService {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+
+    public ProjectsAssigment findProjectsAssigmentByFields(String projectId, String employeeId) {
+        List<ProjectsAssigment> projectsAssigments = getAllProjectsAssigments();
+        projectsAssigments = projectsAssigments.stream()
+                .filter(projectAssigment -> (projectAssigment.getProjectId().equals(projectId) && projectAssigment.getEmployeeId().equals(employeeId))
+                ).collect(Collectors.toList());
+        return projectsAssigments.get(0);
+    }
+
+
+
 
 }

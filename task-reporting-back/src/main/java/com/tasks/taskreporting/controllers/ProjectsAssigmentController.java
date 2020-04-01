@@ -43,4 +43,13 @@ public class ProjectsAssigmentController {
     public Map<String, Boolean> deleteProject(@PathVariable(value = "id") Long projectsAssigmentId) throws Exception {
         return projectsAssigmentService.deleteProjectsAssigment(projectsAssigmentId);
     }
+
+    @PostMapping("/deleteProjectsAssigment")
+    public Map<String, Boolean> deleteProjectsAssigment(@RequestBody ProjectsAssigment projectsAssigmentDetails) throws Exception {
+        Long idToDelete = projectsAssigmentService.findProjectsAssigmentByFields(projectsAssigmentDetails.getProjectId(), projectsAssigmentDetails.getEmployeeId()).getId();
+       return projectsAssigmentService.deleteProjectsAssigment(idToDelete);
+    }
+
+//    @DeleteMapping("/projectsAssigment")
+//    public Map<String, Boolean> deleteProjectAssigment(@RequestBody)
 }

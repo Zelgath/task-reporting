@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProjectsAssigmentService {
 
   private apiUrl : string = "http://localhost:8080/api/projectsAssigment";
+  private apiUrlToDelete : string = "http://localhost:8080/api/deleteProjectsAssigment";
 
   constructor(private http : HttpClient) { }
 
@@ -30,5 +31,9 @@ export class ProjectsAssigmentService {
 
   deleteProjectsAssigment(id: number) : Observable<ProjectsAssigment> {
     return this.http.delete<ProjectsAssigment>(this.apiUrl + `/${id}`);
+  }
+
+  deleteProjectsAssigmentByFields(data) : Observable<ProjectsAssigment> {
+    return this.http.post<ProjectsAssigment>(this.apiUrlToDelete, data);
   }
 }

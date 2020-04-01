@@ -1,6 +1,9 @@
-<h1>{{employee.firstName}} {{employee.lastName}}</h1>
-<h2>{{employee.job.description}}</h2>
-<h3>Department: {{employee.department.description}}</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>{{employee.firstName}} {{employee.lastName}}</h2><hr>
+<h3>{{employee.job.description}}</h3>
+<h4>Department: {{employee.department.description}}</h4> <br>
 
 <table class="table tr-table">
     <thead>
@@ -25,8 +28,8 @@
             <td class="deleting-cell" (click) = "unassignProjectFromEmployee(project.id)">X</td>
         </tr>
     </tbody>
-</table>
-<h2>Assign project to employee</h2>
+</table><br>
+<h4>Assign project to employee</h4><hr>
 <form [formGroup]="projectAssigmentForm">
 <mat-form-field>
     <mat-label>Select a project</mat-label>
@@ -37,13 +40,20 @@
     </mat-select>
 </mat-form-field> <span><button class="action-panel-btn" type="submit" (click) = "assignProjectToEmployee()"> Add Project</button></span>
 </form>
-<div class="selected-project-descriptions" *ngIf="selectedProject">
-<h2>selected project: {{ selectedProject?.description }} for Client: {{ selectedProject?.client }}</h2>
-<h3>Project start date: {{selectedProject?.startDate}}   Project end date: {{selectedProject?.endDate}}</h3>
-<h3>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h3>
+<div class="selected-project-descriptions" *ngIf="selectedProject"><hr>
+<h4>selected project: {{ selectedProject?.description }} for Client: {{ selectedProject?.client }}</h4> <br>
+<h5>Project start date: {{selectedProject?.startDate}}   Project end date: {{selectedProject?.endDate}}</h5> <br>
+<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
+<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
+<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
+<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
 </div>
 
-<pre> {{ projectAssigmentForm?.value | json }}</pre>
-<pre> {{ projectAssigmentForm?.valid | json }}</pre>
+<!-- <pre> {{ projectAssigmentForm?.value | json }}</pre>
+<pre> {{ projectAssigmentForm?.valid | json }}</pre> -->
 
+
+        </div>
+    </div>
+</div>
 

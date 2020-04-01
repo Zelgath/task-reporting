@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterContentChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnChanges, ViewChild } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { Employee } from 'src/app/models/employee';
 import { Project } from 'src/app/models/project';
+import { EmployeeProjectRowComponent } from '../employee-project-row/employee-project-row.component';
 
 @Component({
   selector: 'tr-projects-assigments',
@@ -17,6 +18,7 @@ export class ProjectsAssigmentsComponent implements OnInit {
   chosenEmployee : Employee;
   activatedRowIndex : number;
   unassignedProjectsForChosenEmployee : Project[];
+  @ViewChild(EmployeeProjectRowComponent, {static: false}) private employeeProjectRowComponent:EmployeeProjectRowComponent;
 
   constructor(private employeesService : EmployeesService,
               private projectsService : ProjectsService) { }
@@ -48,6 +50,11 @@ export class ProjectsAssigmentsComponent implements OnInit {
     this.employeesService.getEmployee(i).subscribe((employee)=>{
       this.chosenEmployee=employee;
       this.setUnassignedProjectsForEmployee(employee);
+      
+      if(this.employeeProjectRowComponent && this.employeeProjectRowComponent.selectedProject){
+        this.employeeProjectRowComponent.projectAssigmentForm.reset();
+        this.employeeProjectRowComponent.assignValuesToSelectedProject(null);
+      }
     })
     
   }

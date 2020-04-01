@@ -20,7 +20,7 @@
                 <tr *ngFor="let employee of employees; let i = index" (click) = "chooseEmployee(employee.id)" 
                 (click) = "activateRow(i)" [ngClass]="{'activatedRow': i===activatedRowIndex}">
                     <td> {{employee.firstName}} {{employee.lastName}}</td>
-                    <td>
+                    <td class="projects-listing">
                         <ul>
                             <li *ngFor= "let project of employee.projects; let j=index"> {{ project.description }} </li>
                         </ul>
@@ -30,12 +30,13 @@
             </table>
         </div>
         <div class="col-sm-7">
-                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instruction" [employee] = "chosenEmployee"
-                [projects]="unassignedProjectsForChosenEmployee" (assignedProject)="refreshComponentViewAfterEmployeeAssigned($event)">
+                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instructionInfo" [employee] = "chosenEmployee"
+                [projects]="unassignedProjectsForChosenEmployee" (assignedProject)="refreshComponentViewAfterEmployeeAssigned($event)"
+                (unassignedProject)="refreshComponentViewAfterEmployeeAssigned($event)">
 
                 </tr-employee-project-row>
-            <ng-template #instruction>
-                <p> Click on employee to open assigment panel</p>
+            <ng-template #instructionInfo>
+                <p class="instruction"> Click on employee to open assigment panel.</p>
             </ng-template>
         </div>
     </div>
