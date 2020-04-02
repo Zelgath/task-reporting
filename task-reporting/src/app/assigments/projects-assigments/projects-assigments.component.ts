@@ -4,6 +4,8 @@ import { EmployeesService } from 'src/app/services/employees.service';
 import { Employee } from 'src/app/models/employee';
 import { Project } from 'src/app/models/project';
 import { EmployeeProjectRowComponent } from '../employee-project-row/employee-project-row.component';
+import { Utilites } from 'src/app/shared-module/utilities';
+import { Sort } from '@angular/material';
 
 @Component({
   selector: 'tr-projects-assigments',
@@ -18,15 +20,18 @@ export class ProjectsAssigmentsComponent implements OnInit {
   chosenEmployee : Employee;
   activatedRowIndex : number;
   unassignedProjectsForChosenEmployee : Project[];
+  showSpinner :boolean = true;
   @ViewChild(EmployeeProjectRowComponent, {static: false}) private employeeProjectRowComponent:EmployeeProjectRowComponent;
 
   constructor(private employeesService : EmployeesService,
-              private projectsService : ProjectsService) { }
+              private projectsService : ProjectsService,
+              private utilities : Utilites) { }
 
   ngOnInit() {
     this.loadEmployees();
     this.loadProjects();
   }
+
 
   refreshComponentViewAfterEmployeeAssigned(i : number) {
     this.loadEmployees();
@@ -43,6 +48,7 @@ export class ProjectsAssigmentsComponent implements OnInit {
   loadProjects (): void {
     this.projectsService.getProjects().subscribe((projects)=>{
       this.projects = projects;
+      this.showSpinner = false;
     })
   }
 
@@ -61,6 +67,7 @@ export class ProjectsAssigmentsComponent implements OnInit {
 
   activateRow(i : number) : void {
     this.activatedRowIndex = i;
+    
   }
 
   setUnassignedProjectsForEmployee(employee : Employee) : void {
@@ -70,5 +77,20 @@ export class ProjectsAssigmentsComponent implements OnInit {
     );
     this.unassignedProjectsForChosenEmployee = unassignedProjects;
   }
+
+  sortTable(sort: Sort) {
+    const data = this.employees.slice();
+    if (!sort.active || sort.direction === '') {
+      this.employees = data;
+      return;
+    }
+      this.employees = data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+          case 'lastName': return this.utilities.compare(a.lastName, b.lastName, isAsc);
+          default: return 0;
+        }
+      });
+    }
 
 }

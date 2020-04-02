@@ -2,6 +2,8 @@
 .container {
     position: relative;
     right: 130px;
+    top: 30px;
+    
 }
 .projection {
     position: fixed;
@@ -29,7 +31,8 @@
 
 .projects-listing {
     ul{
-        list-style-type: upper-roman;
+        list-style-type: square;
+        justify-content: left;
         li {
             text-align: left;
             
@@ -38,6 +41,17 @@
     
 }
 
+tr-spinner{
+    position: absolute;
+    left: 700px;
+    top: 400px;
+}
+
+::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+    
+  }
 
 
 

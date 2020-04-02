@@ -17,10 +17,7 @@ public class Starter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        ProjectsAssigment pa = projectsAssigmentService.findProjectsAssigmentByFields("5", "7");
-        System.out.println(pa.getId());
 
-//
 
 
 

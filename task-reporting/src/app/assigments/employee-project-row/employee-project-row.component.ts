@@ -4,6 +4,8 @@ import { Project } from 'src/app/models/project';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProjectsAssigmentService } from 'src/app/services/projects-assigment.service';
 import { ProjectsAssigment } from 'src/app/models/projectsAssigment';
+import { Utilites } from 'src/app/shared-module/utilities';
+import { Sort } from '@angular/material';
 
 @Component({
   selector: 'tr-employee-project-row',
@@ -20,7 +22,8 @@ export class EmployeeProjectRowComponent implements OnInit, OnChanges, AfterCont
   selectedProject : Project;
  
   constructor(private formBuilder : FormBuilder,
-              private projectsAssigmentService : ProjectsAssigmentService) { }
+              private projectsAssigmentService : ProjectsAssigmentService,
+              private utilities : Utilites) { }
 
   ngOnInit() {
   }
@@ -64,6 +67,26 @@ export class EmployeeProjectRowComponent implements OnInit, OnChanges, AfterCont
       this.unassignedProject.emit(this.employee.id);
     })
   }
+
+  sortTable(sort: Sort) {
+    const data = this.employee.projects.slice();
+    if (!sort.active || sort.direction === '') {
+      this.employee.projects = data;
+      return;
+    }
+      this.employee.projects = data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+          case 'description': return this.utilities.compare(a.description, b.description, isAsc);
+          case 'client': return this.utilities.compare(a.client, b.client, isAsc);
+          case 'monthlyCost': return this.utilities.compare(a.monthlyCost, b.monthlyCost, isAsc);
+          case 'startDate': return this.utilities.compare(a.startDate, b.startDate, isAsc);
+          case 'endDate': return this.utilities.compare(a.endDate, b.endDate, isAsc);
+          case 'totalCost': return this.utilities.compare(a.totalCost, b.totalCost, isAsc);
+          default: return 0;
+        }
+      });
+    }
 
   
 

@@ -1,18 +1,11 @@
-<tr-header>
-    <p levels>Assigned Projects</p>
-
-    <div content>
-        <p>LOREM IPSUM</p>
-    </div> 
-</tr-header>
-
 <div class="container">
     <div class="row">
+        <tr-spinner *ngIf="showSpinner"></tr-spinner>
         <div class="col-sm-5">
-            <table class="table tr-table">
+            <table class="table tr-table" matSort (matSortChange)="sortTable($event)" *ngIf="!showSpinner">
                 <thead>
                     <tr>
-                        <th>Employee</th>
+                        <th mat-sort-header="lastName">EMPLOYEE</th>
                         <th>Assigned Projects</th>
                     </tr>
                 </thead>
@@ -30,7 +23,7 @@
             </table>
         </div>
         <div class="col-sm-7">
-                <tr-employee-project-row class="projection" *ngIf="chosenEmployee; else instructionInfo" [employee] = "chosenEmployee"
+                <tr-employee-project-row class="projection" *ngIf="chosenEmployee && !showSpinner; else instructionInfo" [employee] = "chosenEmployee"
                 [projects]="unassignedProjectsForChosenEmployee" (assignedProject)="refreshComponentViewAfterEmployeeAssigned($event)"
                 (unassignedProject)="refreshComponentViewAfterEmployeeAssigned($event)">
 

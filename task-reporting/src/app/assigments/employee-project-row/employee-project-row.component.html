@@ -1,19 +1,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h2>{{employee.firstName}} {{employee.lastName}}</h2><hr>
-<h3>{{employee.job.description}}</h3>
-<h4>Department: {{employee.department.description}}</h4> <br>
+<h3>{{employee.firstName}} {{employee.lastName}}</h3><hr>
+<h4>{{employee.job.description}}</h4>
+<h4>Department: {{employee.department.description}}</h4>
 
-<table class="table tr-table">
+<table class="table tr-table" matSort (matSortChange)="sortTable($event)">
     <thead>
         <tr>
-            <th>Project Description</th>
-            <th>Client</th>
-            <th>Project monthly cost</th>
-            <th>Project Start Date</th>
-            <th>Project End date</th>
-            <th>Total Cost</th>
+            <th mat-sort-header="description">Project Description</th>
+            <th mat-sort-header="client">Client</th>
+            <th mat-sort-header="monthlyCost">Project monthly cost</th>
+            <th mat-sort-header="startDate">Project Start Date</th>
+            <th mat-sort-header="endDate">Project End date</th>
+            <th mat-sort-header="totalCost">Total Cost</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
             <td class="deleting-cell" (click) = "unassignProjectFromEmployee(project.id)">X</td>
         </tr>
     </tbody>
-</table><br>
+</table>
 <h4>Assign project to employee</h4><hr>
 <form [formGroup]="projectAssigmentForm">
 <mat-form-field>
@@ -41,12 +41,9 @@
 </mat-form-field> <span><button class="action-panel-btn" type="submit" (click) = "assignProjectToEmployee()"> Add Project</button></span>
 </form>
 <div class="selected-project-descriptions" *ngIf="selectedProject"><hr>
-<h4>selected project: {{ selectedProject?.description }} for Client: {{ selectedProject?.client }}</h4> <br>
-<h5>Project start date: {{selectedProject?.startDate}}   Project end date: {{selectedProject?.endDate}}</h5> <br>
-<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
-<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
-<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
-<h5>Monthly cost: {{selectedProject?.monthlyCost}}    total cost: {{selectedProject?.totalCost}}</h5> <br>
+<h4>selected project: {{ selectedProject?.description }} | for Client: {{ selectedProject?.client }}</h4> <br>
+<h5>Project start date: {{selectedProject?.startDate}} |  Project end date: {{selectedProject?.endDate}}</h5> <br>
+<h5>Monthly cost: {{selectedProject?.monthlyCost}} PLN  |  total cost: {{selectedProject?.totalCost}} PLN</h5> <br>
 </div>
 
 <!-- <pre> {{ projectAssigmentForm?.value | json }}</pre>
