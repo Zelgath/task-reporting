@@ -43,6 +43,9 @@ public class ContractService {
         contract.setGrade(contractDetails.getGrade());
         contract.setSalaryFactor(contractDetails.getSalaryFactor());
         contract.setEmployee(contractDetails.getEmployee());
+        contract.setEmployeeFuture(contractDetails.getEmployeeFuture());
+        contract.setActive(contractDetails.getActive());
+        contract.setOnHold(contractDetails.getOnHold());
         final Contract updatedContract = contractRepository.save(contract);
         return updatedContract;
     }

@@ -29,7 +29,7 @@
 
                 </tr-employee-project-row>
             <ng-template #instructionInfo>
-                <p class="instruction"> Click on employee to open assigment panel.</p>
+                <p class="instruction" *ngIf="!showSpinner"> Click on employee to open assigment panel.</p>
             </ng-template>
         </div>
     </div>

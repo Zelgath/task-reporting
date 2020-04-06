@@ -14,6 +14,7 @@ export interface Employee {
     job : Job;
     location : Location;
     contractActive : Contract;
+    contractOnHold : Contract;
     idManager : number;
     department : Department;
     isManager : boolean;

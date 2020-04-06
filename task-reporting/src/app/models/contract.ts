@@ -7,4 +7,6 @@ export interface Contract {
     endDate : string;
     grade : Grade;
     salaryFactor : number;
+    active : boolean;
+    onHold: boolean;
 }

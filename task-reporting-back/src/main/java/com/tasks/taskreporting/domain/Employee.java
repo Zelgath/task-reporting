@@ -42,6 +42,10 @@ public class Employee {
     @JoinColumn(name = "id_contract_active")
     private Contract contractActive;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contract_on_hold")
+    private Contract contractOnHold;
+
     @Column(name = "id_manager")
     private Long idManager;
 
@@ -75,7 +79,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Contract contractActive, Long idManager, Department department, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
+    public Employee(Long id, String firstName, String lastName, String email, String phoneNumber, Job job, Location location, Contract contractActive, Contract contractOnHold, Long idManager, Department department, boolean isManager, boolean isOfficer, boolean isActive, List<Project> projects) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -84,6 +88,7 @@ public class Employee {
         this.job = job;
         this.location = location;
         this.contractActive = contractActive;
+        this.contractOnHold = contractOnHold;
         this.idManager = idManager;
         this.department = department;
         this.isManager = isManager;
@@ -154,6 +159,14 @@ public class Employee {
 
     public void setContractActive(Contract contractActive) {
         this.contractActive = contractActive;
+    }
+
+    public Contract getContractOnHold() {
+        return contractOnHold;
+    }
+
+    public void setContractOnHold(Contract contractOnHold) {
+        this.contractOnHold = contractOnHold;
     }
 
     public Long getIdManager() {
@@ -230,6 +243,7 @@ public class Employee {
                 job.equals(employee.job) &&
                 location.equals(employee.location) &&
                 Objects.equals(contractActive, employee.contractActive) &&
+                Objects.equals(contractOnHold, employee.contractOnHold) &&
                 Objects.equals(idManager, employee.idManager) &&
                 department.equals(employee.department) &&
                 Objects.equals(projects, employee.projects);
@@ -237,7 +251,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, contractActive, idManager, department, isManager, isOfficer, isActive, projects);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, job, location, contractActive, contractOnHold, idManager, department, isManager, isOfficer, isActive, projects);
     }
 
     @Override

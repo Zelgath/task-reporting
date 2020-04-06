@@ -54,6 +54,7 @@ public class EmployeeService {
         employee.setOfficer(employeeDetails.isOfficer());
         employee.setActive(employeeDetails.isActive());
         employee.setProjects(employee.getProjects());
+        employee.setContractOnHold(employeeDetails.getContractOnHold());
         final Employee updatedEmployee = employeeRepository.save(employee);
         return updatedEmployee;
     }

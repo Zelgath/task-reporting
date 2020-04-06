@@ -8,11 +8,12 @@ import { SharedModule } from '../shared-module/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSortModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelect, MatSelectModule, MatOptionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContractsAssigmentsComponent } from './contracts-assigments/contracts-assigments.component';
 
 
 
 @NgModule({
-  declarations: [AssigmentsListComponent, ProjectsAssigmentsComponent, EmployeeProjectRowComponent],
+  declarations: [AssigmentsListComponent, ProjectsAssigmentsComponent, EmployeeProjectRowComponent, ContractsAssigmentsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

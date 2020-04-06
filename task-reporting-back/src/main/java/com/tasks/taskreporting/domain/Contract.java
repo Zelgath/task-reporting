@@ -30,21 +30,34 @@ public class Contract {
     @Column(name = "contract_salary_factor")
     private Double salaryFactor;
 
+    @Column(name = "contract_is_active")
+    private Boolean isActive;
+
+    @Column(name = "contract_is_on_hold")
+    private Boolean isOnHold;
+
     @OneToOne(mappedBy = "contractActive", cascade = CascadeType.ALL,
     fetch = FetchType.LAZY, optional = false)
     private Employee employee;
 
+    @OneToOne(mappedBy = "contractOnHold", cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY, optional = false)
+    private Employee employeeFuture;
+
     public Contract() {
     }
 
-    public Contract(Long id, String type, String startDate, String endDate, Grade grade, Double salaryFactor, Employee employee) {
+    public Contract(Long id, String type, String startDate, String endDate, Grade grade, Double salaryFactor, Boolean isActive, Boolean isOnHold, Employee employee, Employee employeeFuture) {
         this.id = id;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
         this.grade = grade;
         this.salaryFactor = salaryFactor;
+        this.isActive = isActive;
+        this.isOnHold = isOnHold;
         this.employee = employee;
+        this.employeeFuture = employeeFuture;
     }
 
     public Long getId() {
@@ -102,6 +115,31 @@ public class Contract {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Boolean getOnHold() {
+        return isOnHold;
+    }
+
+    public void setOnHold(Boolean onHold) {
+        isOnHold = onHold;
+    }
+
+    @JsonIgnore
+    public Employee getEmployeeFuture() {
+        return employeeFuture;
+    }
+
+    public void setEmployeeFuture(Employee employeeFuture) {
+        this.employeeFuture = employeeFuture;
     }
 
     @Override

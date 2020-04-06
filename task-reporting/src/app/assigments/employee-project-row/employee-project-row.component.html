@@ -8,12 +8,12 @@
 <table class="table tr-table" matSort (matSortChange)="sortTable($event)">
     <thead>
         <tr>
-            <th mat-sort-header="description">Project Description</th>
-            <th mat-sort-header="client">Client</th>
-            <th mat-sort-header="monthlyCost">Project monthly cost</th>
-            <th mat-sort-header="startDate">Project Start Date</th>
-            <th mat-sort-header="endDate">Project End date</th>
-            <th mat-sort-header="totalCost">Total Cost</th>
+            <th mat-sort-header="description">PROJECT DESCRIPTION</th>
+            <th mat-sort-header="client">CLIENT</th>
+            <th mat-sort-header="monthlyCost">PROJECT MONTHLY COST</th>
+            <th mat-sort-header="startDate">PROJECT START DATE</th>
+            <th mat-sort-header="endDate">PROJECT END DATE</th>
+            <th mat-sort-header="totalCost">TOTAL COST</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -38,7 +38,7 @@
             {{ project.description }}
         </mat-option>
     </mat-select>
-</mat-form-field> <span><button class="action-panel-btn" type="submit" (click) = "assignProjectToEmployee()"> Add Project</button></span>
+</mat-form-field> <span><button class="action-panel-btn" [disabled]="projectAssigmentForm.invalid" type="submit" (click) = "assignProjectToEmployee()"> Add Project</button></span>
 </form>
 <div class="selected-project-descriptions" *ngIf="selectedProject"><hr>
 <h4>selected project: {{ selectedProject?.description }} | for Client: {{ selectedProject?.client }}</h4> <br>
