@@ -1,1 +1,96 @@
-<p>contracts-assigments works!</p>
+
+<tr-header>
+    <p levels>Contracts assigment</p>
+
+    <div content>
+        <p>LOREM IPSUM</p>
+    </div>
+</tr-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="table-title">Active contracts</p>
+            <table class="table tr-table">
+                <thead>
+                    <tr>
+                        <th>EMPLOYEE</th>
+                        <th>JOB</th>
+                        <th>GRADE</th>
+                        <th>SALARY</th>
+                        <th>START DATE</th>
+                        <th>END DATE</th>
+                        <th>UPDATE</th>
+                        <th>TERMINATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contract of activeContracts; let i=index">
+                        <td> {{ contract.employee.firstName }} {{ contract.employee.lastName }}</td>
+                        <td>{{ contract.employee.job.description }}</td>
+                        <td>{{ contract.grade.description }}</td>
+                        <td>{{ contract.salaryFactor }}</td>
+                        <td>{{ contract.startDate }}</td>
+                        <td>{{ contract.endDate }}</td>
+                        <td> upd </td>
+                        <td>X</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="table-title">On Hold contracts</p>
+            <table class="table tr-table">
+                <thead>
+                    <tr>
+                        <th>EMPLOYEE</th>
+                        <th>JOB</th>
+                        <th>GRADE</th>
+                        <th>SALARY</th>
+                        <th>START DATE</th>
+                        <th>END DATE</th>
+                        <th>UPDATE</th>
+                        <th>TERMINATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contract of onHoldContracts; let i=index">
+                        <td> {{ contract.employeeFuture.firstName }} {{ contract.employeeFuture.lastName }}</td>
+                        <td>{{ contract.employeeFuture.job.description }}</td>
+                        <td>{{ contract.grade.description }}</td>
+                        <td>{{ contract.salaryFactor }}</td>
+                        <td>{{ contract.startDate }}</td>
+                        <td>{{ contract.endDate }}</td>
+                        <td> upd </td>
+                        <td>X</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="table-title">History contracts</p>
+            <table class="table tr-table">
+                <thead>
+                    <tr>
+                        <th>EMPLOYEE</th>
+                        <th>JOB</th>
+                        <th>GRADE</th>
+                        <th>SALARY</th>
+                        <th>START DATE</th>
+                        <th>END DATE</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contract of historyContracts; let i=index">
+                        <td> {{ contract.employeePast.firstName }} {{ contract.employeePast.lastName }}</td>
+                        <td>{{ contract.employeePast.job.description }}</td>
+                        <td>{{ contract.grade.description }}</td>
+                        <td>{{ contract.salaryFactor }}</td>
+                        <td>{{ contract.startDate }}</td>
+                        <td>{{ contract.endDate }}</td>
+                        <td>X</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

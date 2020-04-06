@@ -54,7 +54,4 @@ public class ProjectsAssigmentService {
         return projectsAssigments.get(0);
     }
 
-
-
-
 }

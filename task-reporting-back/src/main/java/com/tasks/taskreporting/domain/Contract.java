@@ -44,10 +44,14 @@ public class Contract {
     fetch = FetchType.LAZY, optional = false)
     private Employee employeeFuture;
 
+    @OneToOne
+    @JoinColumn(name = "was_for_id_employee")
+    private Employee employeePast;
+
     public Contract() {
     }
 
-    public Contract(Long id, String type, String startDate, String endDate, Grade grade, Double salaryFactor, Boolean isActive, Boolean isOnHold, Employee employee, Employee employeeFuture) {
+    public Contract(Long id, String type, String startDate, String endDate, Grade grade, Double salaryFactor, Boolean isActive, Boolean isOnHold, Employee employee, Employee employeeFuture, Employee employeePast) {
         this.id = id;
         this.type = type;
         this.startDate = startDate;
@@ -58,6 +62,7 @@ public class Contract {
         this.isOnHold = isOnHold;
         this.employee = employee;
         this.employeeFuture = employeeFuture;
+        this.employeePast = employeePast;
     }
 
     public Long getId() {
@@ -108,7 +113,6 @@ public class Contract {
         this.salaryFactor = salaryFactor;
     }
 
-    @JsonIgnore
     public Employee getEmployee() {
         return employee;
     }
@@ -133,13 +137,20 @@ public class Contract {
         isOnHold = onHold;
     }
 
-    @JsonIgnore
     public Employee getEmployeeFuture() {
         return employeeFuture;
     }
 
     public void setEmployeeFuture(Employee employeeFuture) {
         this.employeeFuture = employeeFuture;
+    }
+
+    public Employee getEmployeePast() {
+        return employeePast;
+    }
+
+    public void setEmployeePast(Employee employeePast) {
+        this.employeePast = employeePast;
     }
 
     @Override

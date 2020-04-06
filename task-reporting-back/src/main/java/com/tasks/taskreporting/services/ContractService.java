@@ -44,6 +44,7 @@ public class ContractService {
         contract.setSalaryFactor(contractDetails.getSalaryFactor());
         contract.setEmployee(contractDetails.getEmployee());
         contract.setEmployeeFuture(contractDetails.getEmployeeFuture());
+        contract.setEmployeePast(contractDetails.getEmployeePast());
         contract.setActive(contractDetails.getActive());
         contract.setOnHold(contractDetails.getOnHold());
         final Contract updatedContract = contractRepository.save(contract);

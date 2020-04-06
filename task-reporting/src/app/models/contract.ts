@@ -1,4 +1,5 @@
 import { Grade } from './grade';
+import { Employee } from './employee';
 
 export interface Contract {
     id : number;
@@ -9,4 +10,6 @@ export interface Contract {
     salaryFactor : number;
     active : boolean;
     onHold: boolean;
+    employee: Employee;
+    employeeFuture: Employee;
 }

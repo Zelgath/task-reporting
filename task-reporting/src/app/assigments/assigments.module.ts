@@ -32,7 +32,8 @@ import { ContractsAssigmentsComponent } from './contracts-assigments/contracts-a
   exports: [
     RouterModule,
     AssigmentsListComponent,
-    ProjectsAssigmentsComponent
+    ProjectsAssigmentsComponent,
+    ContractsAssigmentsComponent
   ]
 })
 export class AssigmentsModule { }

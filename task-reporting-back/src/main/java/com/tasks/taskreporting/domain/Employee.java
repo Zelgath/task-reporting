@@ -1,6 +1,7 @@
 package com.tasks.taskreporting.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -153,6 +154,7 @@ public class Employee {
         this.location = location;
     }
 
+    @JsonIgnore
     public Contract getContractActive() {
         return contractActive;
     }
@@ -161,6 +163,7 @@ public class Employee {
         this.contractActive = contractActive;
     }
 
+    @JsonIgnore
     public Contract getContractOnHold() {
         return contractOnHold;
     }
